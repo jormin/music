@@ -11,11 +11,11 @@
 <head>
     <meta charset="UTF-8">
     <title>音乐</title>
-    <link rel="stylesheet" type="text/css" href="./res/css/core.css">
-    <link rel="stylesheet" type="text/css" href="./res/css/pt_frame.css">
-    <link rel="stylesheet" type="text/css" href="./res/css/pt_search_index.css">
-    <link rel="stylesheet" type="text/css" href="./res/css/music.css">
-    <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/res/css/core.css">
+    <link rel="stylesheet" type="text/css" href="/res/css/pt_frame.css">
+    <link rel="stylesheet" type="text/css" href="/res/css/pt_search_index.css">
+    <link rel="stylesheet" type="text/css" href="/res/css/music.css">
+    <link href="/res/css/font-awesome.css" rel="stylesheet">
 </head>
 <body>
     <div class="g-bd" id="music">
@@ -137,8 +137,8 @@
     <script src="/res/js/jquery.min.js"></script>
     <script src="/res/vendor/aplayer/aplayer.min.js"></script>
     <script src="/res/js/vue.js"></script>
-    <script src="https://unpkg.com/axios@0.12.0/dist/axios.min.js"></script>
-    <script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script>
+    <script src="/res/js/axios.min.js"></script>
+    <script src="/res/js/lodash.min.js"></script>
     <script src="/res/vendor/layer/layer.js"></script>
 
     <script type="text/javascript">

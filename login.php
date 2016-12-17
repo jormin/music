@@ -6,8 +6,9 @@
             redirect("index.php");
         }
     }else{
-        $account = trim($_POST['account']);
-        $password = trim($_POST['password']);
+        $_params = json_decode(file_get_contents('php://input'),true);
+        $account = trim($_params['account']);
+        $password = trim($_params['password']);
         if(!$account || !$password){
             die;
         }
@@ -15,7 +16,7 @@
         $cookie = "sid=".guid();
         $response = json_decode(http("post",$url,null,$cookie),true);
         if($response['code'] != 0){
-            returnMsg(-1,"用户名或密码错误");
+            returnMsg(-1,"粗错咯，邮箱或者密码不对～");
         }
         $user = $response['data'];
         if(substr($user['avatar'],0,4) != "http"){
@@ -40,57 +41,82 @@
     <!--[if lte IE 9]>
     <script type="text/javascript">location.href = '/unsupport-browser.html';</script>
     <![endif]-->
-    <link rel="stylesheet" href="./res/css/vendor.css">
-    <link rel="stylesheet" href="./res/css/app.css">
+    <link rel="stylesheet" href="/res/css/vendor.css">
+    <link rel="stylesheet" href="/res/css/app.css">
 </head>
 <body class="coding-center coding ng-scope random-background account-background" style="margin: 0px; padding: 0px; height: 100%; background: url(./res/images/login_background.jpg) 50% 50% / cover no-repeat fixed;">
-    <div class="wrapper ng-scope" ng-view="">
+    <div class="wrapper" id="loginwrap">
         <div class="account-flex-container ng-scope">
             <iframe src="about:blank" name="sink" style="display:none"></iframe>
             <div ng-controller="LoginController" class="account-container ng-scope">
                 <h2>用户登录</h2>
                 <div>
-                    <input-gk-phone-email ret="account" class="ng-isolate-scope">
+                    <div ret="account" class="ng-isolate-scope">
                         <div class="account-input dirty" ng-class="{dirty: dirty}">
-                            <input autofocus="" ng-model="ret.value" placeholder="邮箱" ng-blur="check()" ng-keyup="check()" name="account" class="ng-valid ng-touched ng-dirty ng-valid-parse"></div>
-                    </input-gk-phone-email>
-                    <input-password ret="password" show-error="false" class="ng-isolate-scope">
+                            <input autofocus="" v-model="account" placeholder="邮箱" v-on:keyup.enter="typepassword"></div>
+                    </div>
+                    <div ret="password" show-error="false" class="ng-isolate-scope">
                         <div class="account-input" ng-class="{dirty: dirty}">
-                            <input type="password" ng-model="ret.value" placeholder="密码" ng-class="{error: !ret.valid}" ng-blur="check()" ng-keyup="check()" name="password" class="ng-valid ng-dirty ng-valid-parse ng-touched">
+                            <input type="password" placeholder="密码" name="password" v-model="password" v-on:keyup.enter="login">
                             <span ng-show="!ret.valid" class="error ng-binding ng-hide"></span>
                         </div>
-                    </input-password>
+                    </div>
                     <br>
-                    <button id="login-btn">登录</button>
+                    <button :class="{loading:islogin}" :disabled="islogin" v-on:click="login">登录</button>
                 </div>
             </div>
         </div>
     </div>
     <script src="/res/js/jquery.min.js"></script>
+    <script src="/res/js/vue.js"></script>
     <script src="/res/js/requestAjax.js"></script>
     <script src="/res/vendor/layer/layer.js"></script>
+    <script src="/res/js/axios.min.js"></script>
+    <script src="/res/js/lodash.min.js"></script>
     <script type="text/javascript">
-        $("#login-btn").click(function(){
-            var _this = $(this);
-            var account = $(this).closest('div').find("input[name='account']").val();
-            var password = $(this).closest('div').find("input[name='password']").val();
-            if(!account || !password){
-                return false;
-            }
-            _this.addClass("loading");
-            _this.attr("disabled","disabled");
-            var params = {account:account,password:password};
-            var callback = function(msg){
-                _this.removeClass("loading");
-                if(msg.result == 0){
-                    window.location.href = "/index.php";
-                }else{
-                    layer.msg(msg.description,function(){
-                        _this.removeAttr("disabled");
-                    })
+        var loginvm = new Vue({
+            el : '#loginwrap',
+            data : {
+                account : '',
+                password : '',
+                islogin : false
+            },
+            methods : {
+                typepassword : function(){
+                    $("#loginwrap").find("input[name=password]").focus();
+                },
+                login : function(){
+                    var vm = this;
+                    var _logindom = $("#loginwrap");
+                    if(!vm.account){
+                        layer.msg("请输入邮箱");
+                        return false;
+                    }
+                    if(!vm.password){
+                        layer.msg("请输入密码");
+                        return false;
+                    }
+                    vm.islogin = true;
+                    var params = {account:vm.account,password:vm.password};
+                    axios.post("/login.php",params)
+                        .then(function(response){
+                            vm.islogin = false;
+                            var msg = response.data;
+                            _logindom.removeClass("loading");
+                            if(msg.result == 0){
+                                window.location.href = "/index.php";
+                            }else{
+                                layer.msg(msg.description,function(){
+                                    _logindom.removeAttr("disabled");
+                                })
+                            }
+                        })
+                        .catch(function(error){
+                            vm.islogin = false;
+                            vm.answer = '访问接口失败' + error
+                        })
                 }
-            };
-            requestAjax(params, 'post', '/login.php', callback, true);
+            }
         });
     </script>
 </body>
