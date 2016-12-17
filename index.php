@@ -179,6 +179,10 @@
                     axios.post("/song.php",params)
                         .then(function(response){
                             var songs = response.data.result.songs;
+                            if(!songs){
+                                return;
+                            }
+                            vm.page++;
                             if(isappend == 1){
                                 vm.songs = vm.songs.concat(songs);
                             }else{
