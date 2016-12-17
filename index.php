@@ -82,7 +82,7 @@
                     <div class="n-srchrst">
                         <div class="srchsongst">
                             <template v-for="(song,index,key) in songs">
-                                <div class="item f-cb h-flag" :class="{ even: iseven(index) }">
+                                <div class="item f-cb h-flag" :class="{ even: iseven(index),'js-dis':isforbidden(song.privilege.subp)}">
                                     <div class="td">
                                         <div class="hd">
                                             <a v-on:click="playsong(song)" class="ply" :class="{'ply-z-slt':cuplay==song.id}" title="播放" data-res-copyright="1" data-res-type="18" data-res-id="4038411" data-res-action="play" data-res-from="32" data-res-data="song.name"></a>
@@ -91,7 +91,7 @@
                                     <div class="td w0">
                                         <div class="sn">
                                             <div class="text">
-                                                <a :href="'/song?id='+song.id"> <b title="Coming Home"><span class="s-fc7">{{song.name}}</span></b> 
+                                                <a href="javascript:;" v-on:click="playsong(song)"> <b title="Coming Home"><span class="s-fc7">{{song.name}}</span></b> 
                                                 </a>
                                                 <a title="MV" v-on:click="playmv(song)" v-show="song.mv != ''" class="mv" href="javascript:;"></a>
                                             </div>
@@ -108,13 +108,13 @@
                                     <div class="td w1">
                                         <div class="text">
                                             <template v-for="artist in song.ar">
-                                                <a :href="'/artist'+artist.id">{{artist.name}}</a>
+                                                <a href="javascript:;" v-on:click="searchartist(artist.id,artist.name)">{{artist.name}}</a>
                                             </template>
                                         </div>
                                     </div>
                                     <div class="td w2">
                                         <div class="text">
-                                            <a class="s-fc3" :href="'/album?id='+song.al.id" :title="'《'+song.al.name+'》'">
+                                            <a class="s-fc3" href="javascript:;" v-on:click="searchalbum(song.al.id,song.al.name)" :title="'《'+song.al.name+'》'">
                                                 《
                                                 <span class="s-fc7">{{song.al.name}}</span>
                                                 》
@@ -172,7 +172,12 @@
                 if(!this.keyword){
                     this.keyword = "周杰伦";
                 }
-                this.searchsong();
+                var albumid = getlocalstorage("albumid");
+                if(albumid){
+                    this.searchalbum(albumid,this.keyword);
+                }else{
+                    this.searchsong();
+                }
             },
             computed : {
                 activenav : function(){
@@ -187,6 +192,7 @@
                     if(!vm.keyword){
                         return;
                     }
+                    setlocalstorage("albumid","");
                     var params = {action:"search",keyword:vm.keyword,page:vm.page,type:1};
                     axios.post("/song.php",params)
                         .then(function(response){
@@ -213,6 +219,30 @@
                             vm.answer = '访问接口失败' + error
                         })
                 },500),
+                searchartist : function(artistid,name){
+                    this.keyword = name;
+                    this.searchsong();
+                },
+                searchalbum : function(albumid,name){
+                    var vm = this;
+                    var params = {action:"album",albumid:albumid};
+                    axios.post("/song.php",params)
+                        .then(function(response){
+                            var songs = response.data.songs;
+                            if(!songs){
+                                return;
+                            }
+                            vm.hasmore =  false;
+                            vm.page = 1;
+                            vm.songs = songs;
+                            vm.keyword = name;
+                            setlocalstorage("albumid",albumid);
+                            setlocalstorage("keyword",vm.keyword);
+                        })
+                        .catch(function(error){
+                            vm.answer = '访问接口失败' + error
+                        })
+                },
                 typenav : function(dom){
                     console.log(dom);
                 },
@@ -234,17 +264,29 @@
                         return true;
                     }
                 },
+                isforbidden : function(subp){
+                    if(subp == "0"){
+                        return true;
+                    }else{
+                        return false;
+                    }
+                },
                 playsong: _.debounce(function(song){
                     var vm = this;
-                    var hasplay = true;
+                    if(song.privilege.subp == "0"){
+                        layer.msg("粗错咯，网易没这首歌的版权～");
+                        return;
+                    }
+                    var hasplay = false;
                     if(aplayer){
                         $(playlist).each(function(index,item){
                             if(song.id == item.id){
                                 aplayer.setMusic(index);
+                                hasplay = true;
                                 return false;
                             }
                         })
-                        if(!hasplay){
+                        if(hasplay){
                             return;
                         }
                     }
@@ -320,6 +362,7 @@
                 mutex: true,
                 theme: '#615754',
                 mode: 'circulation',
+                listmaxheight: '200px',
                 music: playlist
             })
         }

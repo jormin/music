@@ -28,7 +28,6 @@
     		break;
     	case 'mvinfo':
     		$mvid = trim($_params['mvid']);
-    		$mvid = "522351";
     		$mvinfo = json_decode($netease->mv($mvid),true);
     		if($mvinfo['data']){
     			$mv = $mvinfo['data'];
@@ -38,6 +37,10 @@
     		}
     		$response = json_encode($mv);
     		break;
+        case 'album':
+            $albumid = trim($_params['albumid']);
+            $response = $netease->album($albumid);
+            break;
     }
     die($response);
 ?>
