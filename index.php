@@ -192,6 +192,9 @@
                     if(!vm.keyword){
                         return;
                     }
+                    if(isappend != 1){
+                        vm.page = 1;   
+                    }
                     setlocalstorage("albumid","");
                     var params = {action:"search",keyword:vm.keyword,page:vm.page,type:1};
                     axios.post("/song.php",params)
@@ -200,11 +203,10 @@
                             if(!songs){
                                 return;
                             }
+                            vm.page++;
                             if(isappend == 1){
-                                vm.page++;
                                 vm.songs = vm.songs.concat(songs);
                             }else{
-                                vm.page = 1;
                                 vm.songs = songs;
                             }
                             vm.songCount = response.data.result.songCount;
