@@ -99,10 +99,10 @@
                                     </div>
                                     <div class="td">
                                         <div class="opt hshow">
-                                            <a class="u-icn u-icn-81 icn-add" href="javascript:;" title="添加到播放列表" hidefocus="true" data-res-copyright="1" data-res-type="18" data-res-id="4038411" data-res-action="addto" data-res-from="32" data-res-data="coming&nbsp;home"></a>
-                                            <span data-res-id="NL4038411" data-res-action="fav" data-res-type="18" class="icn icn-fav" title="收藏"></span>
-                                            <span data-res-id="NL4038411" data-res-action="share" data-res-type="18" class="icn icn-share" title="分享"></span>
-                                            <span data-res-id="4038411" data-indexid="NL4038411" data-res-action="download" data-res-type="18" class="icn icn-dl" title="下载"></span>
+                                            <a class="u-icn u-icn-81 icn-add" href="javascript:;" title="添加到播放列表" hidefocus="true" v-on:click="addtoplaylist(song)"></a>
+                                            <span class="icn icn-fav" title="收藏"></span>
+                                            <span class="icn icn-share" title="分享"></span>
+                                            <span class="icn icn-dl" title="下载"></span>
                                         </div>
                                     </div>
                                     <div class="td w1">
@@ -192,6 +192,7 @@
                     if(!vm.keyword){
                         return;
                     }
+                    vm.page = 1;
                     setlocalstorage("albumid","");
                     var params = {action:"search",keyword:vm.keyword,page:vm.page,type:1};
                     axios.post("/song.php",params)
@@ -321,6 +322,50 @@
                             vm.answer = '访问接口失败' + error
                         })
                 },500),
+                addtoplaylist: function(song){
+                    var vm = this;
+                    if(song.privilege.subp == "0"){
+                        layer.msg("粗错咯，网易没这首歌的版权～");
+                        return;
+                    }
+                    var hasplay = false;
+                    $(playlist).each(function(index,item){
+                        if(song.id == item.id){
+                            layer.msg("已添加到播放列表");
+                            hasplay = true;
+                            return false;
+                        }
+                    })
+                    if(hasplay){
+                        return;
+                    }
+                    var params = {action:"songinfo",songid:song.id};
+                    axios.post("/song.php",params)
+                        .then(function(response){
+                            var songinfo = response.data;
+                            if(!songinfo){
+                                layer.msg("播放失败");
+                                return;
+                            }
+                            var artists = new Array();
+                            $(song.ar).each(function(index,artist){
+                                artists.push(artist.name)
+                            })
+                            var songitem = {
+                                id:song.id,
+                                title: song.name,
+                                author: artists.join("/"),
+                                url: songinfo.url,
+                                pic: 'http://p4.music.126.net/hg3mIdjZnFcBY3vFmD-dew==/109951162819344952.jpg?param=140y140',
+                                lrc: songinfo.lrc
+                            };
+                            playlist.push(songitem);
+                            setlocalstorage("playlist",JSON.stringify(playlist));
+                        })
+                        .catch(function(error){
+                            vm.answer = '访问接口失败' + error
+                        })
+                },
                 playmv : _.debounce(function(song){
                     var vm = this;
                     var hasplay = true;
