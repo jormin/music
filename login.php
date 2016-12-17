@@ -69,7 +69,6 @@
     </div>
     <script src="/res/js/jquery.min.js"></script>
     <script src="/res/js/vue.js"></script>
-    <script src="/res/js/requestAjax.js"></script>
     <script src="/res/vendor/layer/layer.js"></script>
     <script src="/res/js/axios.min.js"></script>
     <script src="/res/js/lodash.min.js"></script>
