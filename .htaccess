@@ -1,0 +1,9 @@
+<IfModule mod_rewrite.c>
+	RewriteEngine on
+
+	RewriteCond %{REQUEST_URI} !^/(.*).php
+	RewriteCond %{REQUEST_URI} !^/res
+	RewriteCond %{REQUEST_URI} !(.html|.js|.css|.jpg|.png|.gif|.bmp)$
+	RewriteRule ^(.*)$ /index.php?dir=$1 [L]
+
+</IfModule>

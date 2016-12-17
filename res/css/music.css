@@ -1,0 +1,22 @@
+.aplayer{
+    width: 980px;
+    z-index: 999;
+    background-color: #fff;
+    margin: 0 !important;
+    position: fixed;
+    zoom: 1;
+    bottom: 0;
+    z-index: 1002;
+    margin-top: 100px;
+    border-top: 1px solid #d3d3d3;
+}
+#loadmore{
+    text-align: center;
+    padding: 20px;
+}
+#loadmore a{
+    text-decoration:none;
+}
+a:hover{
+    cursor: pointer;
+}
