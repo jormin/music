@@ -367,6 +367,7 @@
             })
         }
         function setlocalstorage(key,value){
+            key = <?php echo $user['id']?>+"_"+key;
             if (window.localStorage) {
                 localStorage.setItem(key, value);
             } else {
@@ -374,6 +375,7 @@
             }
         }
         function getlocalstorage(key){
+            key = <?php echo $user['id']?>+"_"+key;
             if (window.localStorage) {
                 return localStorage.getItem(key);  
             } else {

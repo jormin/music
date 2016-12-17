@@ -68,7 +68,7 @@
     </div>
     <script src="/res/js/jquery.min.js"></script>
     <script src="/res/js/requestAjax.js"></script>
-    <script src="/res/js/vendor/layer/layer.js"></script>
+    <script src="/res/vendor/layer/layer.js"></script>
     <script type="text/javascript">
         $("#login-btn").click(function(){
             var _this = $(this);
