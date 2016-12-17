@@ -236,6 +236,7 @@
                             vm.page = 1;
                             vm.songs = songs;
                             vm.keyword = name;
+                            vm.songCount = songs.length;
                             setlocalstorage("albumid",albumid);
                             setlocalstorage("keyword",vm.keyword);
                         })

@@ -99,12 +99,12 @@
                     var params = {account:vm.account,password:vm.password};
                     axios.post("/login.php",params)
                         .then(function(response){
-                            vm.islogin = false;
                             var msg = response.data;
                             _logindom.removeClass("loading");
                             if(msg.result == 0){
                                 window.location.href = "/index.php";
                             }else{
+                                vm.islogin = false;
                                 layer.msg(msg.description,function(){
                                     _logindom.removeAttr("disabled");
                                 })
