@@ -1,8 +1,9 @@
 <?php
     include_once("./lib/init.php");
-    if(!session("uid")){
-        // redirect("/login.php");
+    if(session("isauth") != 1){
+        redirect("/login.php");
     }
+    $user = session('user');
     header("Content-type: text/html; charset=utf-8"); 
 ?>
 <!DOCTYPE html>
@@ -14,15 +15,23 @@
     <link rel="stylesheet" type="text/css" href="./res/css/pt_frame.css">
     <link rel="stylesheet" type="text/css" href="./res/css/pt_search_index.css">
     <link rel="stylesheet" type="text/css" href="./res/css/music.css">
+    <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
 </head>
 <body>
     <div class="g-bd" id="music">
         <div class="g-wrap n-srch">
-            <div class="pgsrch f-pr j-suggest">
+            <div id="logo-wrap">
+                <span><img src="/res/images/logo.png" class="logo"></span>
+            </div>
+            <div id="search-wrap" class="pgsrch f-pr j-suggest">
                 <input type="text" class="srch j-flag" value="" v-model="keyword" v-on:keyup.enter="searchsong">
                 <span class="j-flag" style="display:none;">&nbsp;</span>
                 <a hidefocus="true" href="javascript:void(0)" class="btn j-flag" title="搜索" v-on:click="searchsong">搜索</a>
                 <div class="u-lstlay j-flag" style="display:none;"></div>
+            </div>
+            <div id="user-wrap">
+                <a href="javascript:;" :title="user.name"><img :src="user.avatar"></a>
+                <a class="ui small button" href="/logout.php"><span><i class="fa fa-sign-out"></i></span>退出</a>
             </div>
             <div id="m-search">
                 <div class="snote s-fc4 ztag">
@@ -154,7 +163,11 @@
                 songCount : 0,
                 totalpage : 0,
                 hasmore : false,
-                cuplay:0
+                cuplay:0,
+                user:{
+                    name:'<?php echo $user['name']?>',
+                    avatar:'<?php echo $user['avatar']?>',
+                }
             },
             created: function () {
                 if(!this.keyword){
@@ -217,9 +230,9 @@
                 },
                 iseven : function(index){
                     if(index%2){
-                        return true;
-                    }else{
                         return false;
+                    }else{
+                        return true;
                     }
                 },
                 playsong: _.debounce(function(song){

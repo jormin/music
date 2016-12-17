@@ -2,16 +2,32 @@
     include_once("./lib/init.php");
     $method = $_SERVER['REQUEST_METHOD'];
     if($method == "GET"){
-        if(session("uid")){
+        if(session("isauth") == 1){
             redirect("index.php");
         }
     }else{
-        $uid = trim($_POST['uid']);
-        if(!$uid){
+        $account = trim($_POST['account']);
+        $password = trim($_POST['password']);
+        if(!$account || !$password){
             die;
         }
-        session('uid',$uid);
-        returnMsg(0,"登录成功");
+        $url = "https://coding.net/api/v2/account/login?account={$account}&password=".sha1($password);
+        $cookie = "sid=".guid();
+        $response = json_decode(http("post",$url,null,$cookie),true);
+        if($response['code'] != 0){
+            returnMsg(-1,"用户名或密码错误");
+        }
+        $user = $response['data'];
+        if(substr($user['avatar'],0,4) != "http"){
+            $user['avatar'] = "https://coding.net".$user['avatar'];
+        }
+        session('user',$user);
+        $url = "https://coding.net/api/user/banshan/project/music";
+        $response = json_decode(http("get",$url,null,$cookie),true);
+        if($response['code'] == 0){
+            session('isauth',1);
+        }
+        returnMsg($response['code'],$response['msg']['permission_denied']);
     }
 ?>
 <!DOCTYPE html>
@@ -35,9 +51,15 @@
                 <h2>用户登录</h2>
                 <div>
                     <input-gk-phone-email ret="account" class="ng-isolate-scope">
-                        <div class="account-input dirty">
-                            <input autofocus="" ng-model="ret.value" placeholder="网易云音乐ID" name="uid"></div>
+                        <div class="account-input dirty" ng-class="{dirty: dirty}">
+                            <input autofocus="" ng-model="ret.value" placeholder="邮箱" ng-blur="check()" ng-keyup="check()" name="account" class="ng-valid ng-touched ng-dirty ng-valid-parse"></div>
                     </input-gk-phone-email>
+                    <input-password ret="password" show-error="false" class="ng-isolate-scope">
+                        <div class="account-input" ng-class="{dirty: dirty}">
+                            <input type="password" ng-model="ret.value" placeholder="密码" ng-class="{error: !ret.valid}" ng-blur="check()" ng-keyup="check()" name="password" class="ng-valid ng-dirty ng-valid-parse ng-touched">
+                            <span ng-show="!ret.valid" class="error ng-binding ng-hide"></span>
+                        </div>
+                    </input-password>
                     <br>
                     <button id="login-btn">登录</button>
                 </div>
@@ -46,18 +68,18 @@
     </div>
     <script src="/res/js/jquery.min.js"></script>
     <script src="/res/js/requestAjax.js"></script>
-    <script src="/res/vendor/layer/layer.js"></script>
+    <script src="/res/js/vendor/layer/layer.js"></script>
     <script type="text/javascript">
         $("#login-btn").click(function(){
             var _this = $(this);
-            var uid = $(this).closest('div').find("input[name='uid']").val();
-            if(!uid){
-                layer.msg("请输入网易云音乐ID");
+            var account = $(this).closest('div').find("input[name='account']").val();
+            var password = $(this).closest('div').find("input[name='password']").val();
+            if(!account || !password){
                 return false;
             }
             _this.addClass("loading");
             _this.attr("disabled","disabled");
-            var params = {uid:uid};
+            var params = {account:account,password:password};
             var callback = function(msg){
                 _this.removeClass("loading");
                 if(msg.result == 0){
