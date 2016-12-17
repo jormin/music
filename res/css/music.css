@@ -22,8 +22,8 @@ a:hover{
 }
 #logo-wrap{
     float:left;
-    margin-top: -20px;
-}
+    font-size:40px;
+    }
 .logo{
     width:80px;
 }

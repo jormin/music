@@ -21,7 +21,7 @@
     <div class="g-bd" id="music">
         <div class="g-wrap n-srch">
             <div id="logo-wrap">
-                <span><img src="/res/images/logo.png" class="logo"></span>
+                <span>{{user.name}}</span>
             </div>
             <div id="search-wrap" class="pgsrch f-pr j-suggest">
                 <input type="text" class="srch j-flag" value="" v-model="keyword" v-on:keyup.enter="searchsong">
@@ -30,8 +30,7 @@
                 <div class="u-lstlay j-flag" style="display:none;"></div>
             </div>
             <div id="user-wrap">
-                <a href="javascript:;" :title="user.name"><img :src="user.avatar"></a>
-                <a class="ui small button" href="/logout.php"><span><i class="fa fa-sign-out"></i></span>退出</a>
+                <a class="ui small button" href="/logout.php"><span><i class="fa fa-sign-out"></i></span></a>
             </div>
             <div id="m-search">
                 <div class="snote s-fc4 ztag">
