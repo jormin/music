@@ -93,7 +93,7 @@
                                             <div class="text">
                                                 <a href="javascript:;" v-on:click="playsong(song)"> <b title="Coming Home"><span class="s-fc7">{{song.name}}</span></b> 
                                                 </a>
-                                                <a title="MV" v-on:click="playmv(song)" v-show="song.mv != ''" class="mv" href="javascript:;"></a>
+                                                <a :title="song.name" v-show="song.mv != ''" class="mv" :href="'http://music.163.com/#/mv?id='+song.mv" target="_blank"></a>
                                             </div>
                                         </div>
                                     </div>
