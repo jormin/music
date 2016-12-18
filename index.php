@@ -112,8 +112,8 @@
                                     </div>
                                     <div class="td w1">
                                         <div class="text">
-                                            <template v-for="artist in song.ar">
-                                                <a href="javascript:;" v-on:click="searchartist(artist.id,artist.name)">{{artist.name}}</a>
+                                            <template v-for="(artist,index) in song.ar">
+                                                <a href="javascript:;" v-on:click="searchartist(artist.id,artist.name)">{{artist.name}}</a><span v-show="isnotlast(index,song)">&nbsp;/&nbsp;</span>
                                             </template>
                                         </div>
                                     </div>
@@ -271,6 +271,13 @@
                 },
                 iseven : function(index){
                     if(index%2){
+                        return false;
+                    }else{
+                        return true;
+                    }
+                },
+                isnotlast : function(index,data){
+                    if(index == data.ar.length-1){
                         return false;
                     }else{
                         return true;
