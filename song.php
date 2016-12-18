@@ -31,7 +31,13 @@
     		$mvinfo = json_decode($netease->mv($mvid),true);
     		if($mvinfo['data']){
     			$mv = $mvinfo['data'];
-    			$mv['url'] = array_values($mv['brs'])[0];
+                $parr = array("720","480","240");
+                foreach ($parr as $key => $item) {
+                    if($mv['brs'][$item]){
+                        $mv['url'] = $mv['brs'][$item];
+                        break;
+                    }
+                }
     		}else{
     			$mv = null;
     		}

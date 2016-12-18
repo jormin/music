@@ -1,5 +1,9 @@
 <?php
     include_once("./lib/init.php");
+    // $netease = new NeteaseMusicAPI();
+    // // $response = $netease->search("ColdPlay");
+    // $response = $netease->mv(292165);
+    // p($response);die;
     if(session("isauth") != 1){
         redirect("/login.php");
     }
@@ -15,7 +19,8 @@
     <link rel="stylesheet" type="text/css" href="/res/css/pt_frame.css">
     <link rel="stylesheet" type="text/css" href="/res/css/pt_search_index.css">
     <link rel="stylesheet" type="text/css" href="/res/css/music.css">
-    <link href="/res/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/res/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="/res/vendor/simple-modal/assets/css/simplemodal.css">
 </head>
 <body>
     <div class="g-bd" id="music">
@@ -93,7 +98,7 @@
                                             <div class="text">
                                                 <a href="javascript:;" v-on:click="playsong(song)"> <b title="Coming Home"><span class="s-fc7">{{song.name}}</span></b> 
                                                 </a>
-                                                <a :title="song.name" v-show="song.mv != ''" class="mv" :href="'http://music.163.com/#/mv?id='+song.mv" target="_blank"></a>
+                                                <a :title="song.name" v-show="song.mv != ''" class="mv" v-on:click="playmv(song)" target="_blank"></a>
                                             </div>
                                         </div>
                                     </div>
@@ -140,6 +145,9 @@
     <script src="/res/js/axios.min.js"></script>
     <script src="/res/js/lodash.min.js"></script>
     <script src="/res/vendor/layer/layer.js"></script>
+    <script src="/res/vendor/simple-modal/mootools-core-1.3.1.js"></script>
+    <script src="/res/vendor/simple-modal/mootools-more-1.3.1.1.js"></script>
+    <script src="/res/vendor/simple-modal/simple-modal.js"></script>
 
     <script type="text/javascript">
         var playlist = eval(getlocalstorage("playlist"));
@@ -374,29 +382,7 @@
                     if(aplayer){
                         aplayer.pause();
                     }
-                    var params = {action:"mvinfo",mvid:song.mv};
-                    axios.post("/song.php",params)
-                        .then(function(response){
-                            var mvinfo = response.data;
-                            if(!mvinfo){
-                                layer.msg("播放失败");
-                                return;
-                            }
-                            console.log(mvinfo);
-                            layer.open({
-                                type: 2,
-                                title: mvinfo.name,
-                                area: ['630px', '360px'],
-                                shade: 0.8,
-                                closeBtn: 0,
-                                shadeClose: true,
-                                content: mvinfo.url
-                            });
-
-                        })
-                        .catch(function(error){
-                            vm.answer = '访问接口失败' + error
-                        })
+                    init_videoplayer(song);
                 },500),
             }
         });
@@ -413,6 +399,18 @@
                 listmaxheight: '200px',
                 music: playlist
             })
+        }
+        function init_videoplayer(song){
+            var SM = new SimpleModal({"hideFooter":true, "width":710});
+            SM.show({
+              "title":song.name,
+              "model":"modal",
+              "contents":'<iframe src="/playmv.php?mvid='+song.mv+'" width="680" height="382" frameborder="0" webkitAllowFullScreen allowFullScreen rel="noreferrer"></iframe>'
+            });
+            $("#simple-modal").find("a.close").on("click",function(){
+                $('#simple-modal-overlay').remove();
+                $('#simple-modal').remove();
+            });
         }
         function setlocalstorage(key,value){
             key = <?php echo $user['id']?>+"_"+key;
