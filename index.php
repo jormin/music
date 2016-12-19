@@ -357,7 +357,7 @@
                                 layer.msg("播放失败");
                                 return;
                             }
-                            var arsname = this.formatarname(song.ar);
+                            var arsname = vm.formatarname(song.ar);
                             var songitem = {
                                 id:song.id,
                                 title: song.name,
@@ -366,6 +366,7 @@
                                 pic: 'http://p4.music.126.net/hg3mIdjZnFcBY3vFmD-dew==/109951162819344952.jpg?param=140y140',
                                 lrc: songinfo.lrc
                             };
+
                             playlist.push(songitem);
                             setlocalstorage("playlist",JSON.stringify(playlist));
                             init_aplayer();
