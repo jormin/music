@@ -29,9 +29,9 @@
                 <span>{{user.name}}</span>
             </div>
             <div id="search-wrap" class="pgsrch f-pr j-suggest">
-                <input type="text" class="srch j-flag" value="" v-model="keyword" v-on:keyup.enter="searchsong">
+                <input type="text" class="srch j-flag" value="" v-model="keyword" v-on:keyup.enter="search">
                 <span class="j-flag" style="display:none;">&nbsp;</span>
-                <a hidefocus="true" href="javascript:void(0)" class="btn j-flag" title="搜索" v-on:click="searchsong">搜索</a>
+                <a hidefocus="true" href="javascript:void(0)" class="btn j-flag" title="搜索" v-on:click="search">搜索</a>
                 <div class="u-lstlay j-flag" style="display:none;"></div>
             </div>
             <div id="user-wrap">
@@ -42,55 +42,55 @@
                     搜索“{{keyword}}”，找到 <em class="s-fc6">{{songCount}}</em>
                     首单曲
                 </div>
-                <!-- <ul class="m-tabs m-tabs-srch f-cb ztag" data-xname="" style="margin-bottom: auto;">
+                <ul class="m-tabs m-tabs-srch f-cb ztag" data-xname="" style="margin-bottom: auto;">
                     <li class="fst">
-                        <a data-type="1" href="javascript:void(0)" v-on:click="typenav(this)"> <em>单曲</em>
+                        <a data-type="1" href="javascript:void(0)" v-on:click="typenav($event)" :class="{'z-slt':iscurrentnav(1)}"> <em>单曲</em>
                         </a>
                     </li>
                     <li>
-                        <a hidefocus="true" data-type="100" href="javascript:void(0)" v-on:click="typenav(this)">
+                        <a hidefocus="true" data-type="100" href="javascript:void(0)" v-on:click="typenav($event)" :class="{'z-slt':iscurrentnav(100)}">
                             <em>歌手</em>
                         </a>
                     </li>
                     <li>
-                        <a hidefocus="true" data-type="10" href="javascript:void(0)" v-on:click="typenav(this)">
+                        <a hidefocus="true" data-type="10" href="javascript:void(0)" v-on:click="typenav($event)" :class="{'z-slt':iscurrentnav(10)}">
                             <em>专辑</em>
                         </a>
                     </li>
                     <li>
-                        <a hidefocus="true" data-type="1004" href="javascript:void(0)" v-on:click="typenav(this)">
+                        <a hidefocus="true" data-type="1004" href="javascript:void(0)" v-on:click="typenav($event)" :class="{'z-slt':iscurrentnav(1004)}">
                             <em>MV</em>
                         </a>
                     </li>
                     <li>
-                        <a hidefocus="true" data-type="1006" href="javascript:void(0)" v-on:click="typenav(this)">
+                        <a hidefocus="true" data-type="1006" href="javascript:void(0)" v-on:click="typenav($event)" :class="{'z-slt':iscurrentnav(1006)}">
                             <em>歌词</em>
                         </a>
                     </li>
                     <li>
-                        <a hidefocus="true" data-type="1000" href="javascript:void(0)" v-on:click="typenav(this)">
+                        <a hidefocus="true" data-type="1000" href="javascript:void(0)" v-on:click="typenav($event)" :class="{'z-slt':iscurrentnav(1000)}">
                             <em>歌单</em>
                         </a>
                     </li>
                     <li>
-                        <a hidefocus="true" data-type="1009" href="javascript:void(0)" v-on:click="typenav(this)">
+                        <a hidefocus="true" data-type="1009" href="javascript:void(0)" v-on:click="typenav($event)" :class="{'z-slt':iscurrentnav(1009)}">
                             <em>主播电台</em>
                         </a>
                     </li>
                     <li>
-                        <a hidefocus="true" data-type="1002" href="javascript:void(0)" v-on:click="typenav(this)">
+                        <a hidefocus="true" data-type="1002" href="javascript:void(0)" v-on:click="typenav($event)" :class="{'z-slt':iscurrentnav(1002)}">
                             <em>用户</em>
                         </a>
                     </li>
-                </ul> -->
+                </ul>
                 <div class="ztag j-flag">
                     <div class="n-srchrst">
-                        <div class="srchsongst">
+                        <div class="srchsongst" v-if="iscurrentnav(1)">
                             <template v-for="(song,index,key) in songs">
                                 <div class="item f-cb h-flag" :class="{ even: iseven(index),'js-dis':isforbidden(song.privilege.subp)}">
                                     <div class="td">
                                         <div class="hd">
-                                            <a v-on:click="playsong(song)" class="ply" :class="{'ply-z-slt':cuplay==song.id}" title="播放" data-res-copyright="1" data-res-type="18" data-res-id="4038411" data-res-action="play" data-res-from="32" data-res-data="song.name"></a>
+                                            <a v-on:click="playsong(song)" class="ply" :class="{'ply-z-slt':cuplay==song.id}" title="播放"></a>
                                         </div>
                                     </div>
                                     <div class="td w0">
@@ -98,7 +98,7 @@
                                             <div class="text">
                                                 <a href="javascript:;" v-on:click="playsong(song)"> <b title="Coming Home"><span class="s-fc7">{{song.name}}</span></b> 
                                                 </a>
-                                                <a :title="song.name" v-show="song.mv != ''" class="mv" v-on:click="playmv(song)" target="_blank"></a>
+                                                <a :title="song.name" v-show="song.mv != ''" class="mv" v-on:click="playmv(song.mv,song.name)" target="_blank"></a>
                                             </div>
                                         </div>
                                     </div>
@@ -113,7 +113,7 @@
                                     <div class="td w1">
                                         <div class="text">
                                             <template v-for="(artist,index) in song.ar">
-                                                <a href="javascript:;" v-on:click="searchartist(artist.id,artist.name)">{{artist.name}}</a><span v-show="isnotlast(index,song)">&nbsp;/&nbsp;</span>
+                                                <a href="javascript:;" v-on:click="searchartist(artist.id,artist.name)">{{artist.name}}</a><span v-show="isnotlast(index,song.ar)">&nbsp;/&nbsp;</span>
                                             </template>
                                         </div>
                                     </div>
@@ -130,9 +130,36 @@
                                 </div>
                             </template>
                         </div>
+
+                        <ul class="m-mvlist f-cb" v-if="iscurrentnav(1004)">
+                            <template v-for="(mv,index,key) in mvs">
+                                <li>
+                                    <div class="cover f-pr" v-on:click="playmv(mv.id,mv.name)">
+                                        <img :src="mv.cover">
+                                        <span :title="mv.name" class="msk"></span>
+                                        <p class="tr u-msk u-msk-1">
+                                            <span class="u-icn2 u-icn2-mv"></span>
+                                            {{mv.playCount}}
+                                        </p>
+                                        <p class="bl u-msk u-msk-2">{{formatdate(mv.duration)}}</p>
+                                        <a class="link" href="javascript:;"></a>
+                                    </div>
+                                    <h4 class="title f-thide">
+                                        <a href="javascript:;" class="s-fc0" :title="mv.name" v-on:click="playmv(mv.id,mv.name)">{{mv.name}}</a>
+                                    </h4>
+                                    <h5 class="name f-thide">
+                                        <span class="f-thide" :title="formatarname(mv.artists)">
+                                            <template v-for="(artist,index) in mv.artists">
+                                                <a href="javascript:;" v-on:click="searchartist(artist.id,artist.name)">{{artist.name}}</a><span v-show="isnotlast(index,mv.artists)">&nbsp;/&nbsp;</span>
+                                            </template>
+                                        </span>
+                                    </h5>
+                                </li>
+                            </template>
+                        </ul>
                     </div>
                 </div>
-                <div id="loadmore" v-show="hasmore"><a href="javascript:;" v-on:click="searchsong(1)">点击加载更多...</a></div>
+                <div id="loadmore" v-show="hasmore"><a href="javascript:;" v-on:click="search(1)">点击加载更多...</a></div>
                 <div class="j-flag"></div>
             </div>
         </div>
@@ -164,13 +191,19 @@
             el : '#music',
             data : {
                 keyword : getlocalstorage("keyword"),
+                currentnav: 1,
                 page : 1,
                 type : 1,
                 songs : '',
+                mvs : '',
                 songCount : 0,
                 totalpage : 0,
                 hasmore : false,
                 cuplay:0,
+                keymap : {
+                    1:"song",
+                    1004:"mv"
+                },
                 user:{
                     name:'<?php echo $user['name']?>',
                     avatar:'<?php echo $user['avatar']?>',
@@ -184,7 +217,7 @@
                 if(albumid){
                     this.searchalbum(albumid,this.keyword);
                 }else{
-                    this.searchsong();
+                    this.search();
                 }
             },
             computed : {
@@ -195,7 +228,7 @@
                 },
             },
             methods : {
-                searchsong : _.debounce(function(isappend){
+                search : _.debounce(function(isappend){
                     var vm = this;
                     if(!vm.keyword){
                         return;
@@ -204,21 +237,23 @@
                         vm.page = 1;   
                     }
                     setlocalstorage("albumid","");
-                    var params = {action:"search",keyword:vm.keyword,page:vm.page,type:1};
+                    var type = $(this.$el).find(".z-slt").data("type");
+                    var params = {action:"search",keyword:vm.keyword,page:vm.page,type:type};
                     axios.post("/song.php",params)
                         .then(function(response){
-                            var songs = response.data.result.songs;
-                            if(!songs){
+                            var key = vm.keymap[type];
+                            var data = response.data.result[key+"s"];
+                            if(!data){
                                 return;
                             }
                             vm.page++;
                             if(isappend == 1){
-                                vm.songs = vm.songs.concat(songs);
+                                vm[key+"s"] = vm[key+"s"].concat(data);
                             }else{
-                                vm.songs = songs;
+                                vm[key+"s"] = data;
                             }
-                            vm.songCount = response.data.result.songCount;
-                            vm.totalpage = Math.ceil(vm.songCount/20);
+                            vm[key+"Count"] = response.data.result[key+"Count"];
+                            vm.totalpage = Math.ceil(vm[key+"Count"]/20);
                             if(vm.totalpage == 0 || vm.totalpage == vm.page){
                                 vm.hasmore =  false;
                             }else{
@@ -232,7 +267,7 @@
                 },500),
                 searchartist : function(artistid,name){
                     this.keyword = name;
-                    this.searchsong();
+                    this.search();
                 },
                 searchalbum : function(albumid,name){
                     var vm = this;
@@ -255,8 +290,10 @@
                             vm.answer = '访问接口失败' + error
                         })
                 },
-                typenav : function(dom){
-                    console.log(dom);
+                typenav : function(e){
+                    var type = $(e.currentTarget).data("type");
+                    this.currentnav = type;
+                    this.search();
                 },
                 formatdate : function(time){
                     var minutes = parseInt(time/(1000*60));
@@ -269,6 +306,9 @@
                     }
                     return minutes+":"+seconds;
                 },
+                iscurrentnav : function(nav){
+                    return this.currentnav == nav;
+                },
                 iseven : function(index){
                     if(index%2){
                         return false;
@@ -277,7 +317,7 @@
                     }
                 },
                 isnotlast : function(index,data){
-                    if(index == data.ar.length-1){
+                    if(index == data.length-1){
                         return false;
                     }else{
                         return true;
@@ -317,14 +357,11 @@
                                 layer.msg("播放失败");
                                 return;
                             }
-                            var artists = new Array();
-                            $(song.ar).each(function(index,artist){
-                                artists.push(artist.name)
-                            })
+                            var arsname = this.formatarname(song.ar);
                             var songitem = {
                                 id:song.id,
                                 title: song.name,
-                                author: artists.join("/"),
+                                author: arsname,
                                 url: songinfo.url,
                                 pic: 'http://p4.music.126.net/hg3mIdjZnFcBY3vFmD-dew==/109951162819344952.jpg?param=140y140',
                                 lrc: songinfo.lrc
@@ -383,14 +420,21 @@
                             vm.answer = '访问接口失败' + error
                         })
                 },
-                playmv : _.debounce(function(song){
+                playmv : _.debounce(function(mvid,name){
                     var vm = this;
                     var hasplay = true;
                     if(aplayer){
                         aplayer.pause();
                     }
-                    init_videoplayer(song);
+                    init_videoplayer(mvid,name);
                 },500),
+                formatarname : function(ars){
+                    var artists = new Array();
+                    $(ars).each(function(index,artist){
+                        artists.push(artist.name)
+                    })
+                    return artists.join("/");
+                }
             }
         });
 
@@ -407,12 +451,12 @@
                 music: playlist
             })
         }
-        function init_videoplayer(song){
+        function init_videoplayer(mvid,name){
             var SM = new SimpleModal({"hideFooter":true, "width":710});
             SM.show({
-              "title":song.name,
+              "title":name,
               "model":"modal",
-              "contents":'<iframe src="/playmv.php?mvid='+song.mv+'" width="680" height="382" frameborder="0" webkitAllowFullScreen allowFullScreen rel="noreferrer"></iframe>'
+              "contents":'<iframe src="/playmv.php?mvid='+mvid+'" width="680" height="382" frameborder="0" webkitAllowFullScreen allowFullScreen rel="noreferrer"></iframe>'
             });
             $("#simple-modal").find("a.close").on("click",function(){
                 $('#simple-modal-overlay').remove();
