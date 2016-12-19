@@ -159,7 +159,10 @@
                         </ul>
                     </div>
                 </div>
-                <div id="loadmore" v-show="hasmore"><a href="javascript:;" v-on:click="search(1)">点击加载更多...</a></div>
+                <div class="u-load s-fc4" v-show="isload"><i class="icn"></i> 加载中...</div>
+                <div id="loadmore" v-show="hasmore">
+                    <a href="javascript:;" v-on:click="search(1)">点击加载更多...</a>
+                </div>
                 <div class="j-flag"></div>
             </div>
         </div>
@@ -184,21 +187,18 @@
         }else{
             playlist = _.values(playlist);
         }
-        if(playlist && typeof(playlist) == "object" && playlist.length > 0){
-            // init_aplayer();
-        }
         var music = new Vue({
             el : '#music',
             data : {
                 keyword : getlocalstorage("keyword"),
                 currentnav: 1,
+                isload : false,
                 page : 1,
                 type : 1,
                 songs : '',
                 mvs : '',
                 songCount : 0,
                 totalpage : 0,
-                hasmore : false,
                 cuplay:0,
                 keymap : {
                     1:"song",
@@ -226,6 +226,18 @@
                         "z-slt" : true
                     };
                 },
+                hasmore : function(){
+                    var vm = this;
+                    if(vm.isload){
+                        return false;
+                    }else{
+                        if(vm.totalpage == 0 || vm.totalpage == vm.page){
+                            return false;
+                        }else{
+                            return true;
+                        }
+                    }
+                }
             },
             methods : {
                 search : _.debounce(function(isappend){
@@ -233,15 +245,20 @@
                     if(!vm.keyword){
                         return;
                     }
+                    vm.isload = true;
+                    var type = $(this.$el).find(".z-slt").data("type");
+                    var key = vm.keymap[type];
                     if(isappend != 1){
-                        vm.page = 1;   
+                        vm.page = 1;
+                        vm[key+"s"] = [];
+                        vm[key+"Count"] = 0;
+                        vm.totalpage = 0;
                     }
                     setlocalstorage("albumid","");
-                    var type = $(this.$el).find(".z-slt").data("type");
                     var params = {action:"search",keyword:vm.keyword,page:vm.page,type:type};
                     axios.post("/song.php",params)
                         .then(function(response){
-                            var key = vm.keymap[type];
+                            vm.isload = false;
                             var data = response.data.result[key+"s"];
                             if(!data){
                                 return;
@@ -254,14 +271,10 @@
                             }
                             vm[key+"Count"] = response.data.result[key+"Count"];
                             vm.totalpage = Math.ceil(vm[key+"Count"]/20);
-                            if(vm.totalpage == 0 || vm.totalpage == vm.page){
-                                vm.hasmore =  false;
-                            }else{
-                                vm.hasmore =  true;
-                            }
                             setlocalstorage("keyword",vm.keyword);
                         })
                         .catch(function(error){
+                            vm.isload = false;
                             vm.answer = '访问接口失败' + error
                         })
                 },500),
@@ -292,6 +305,8 @@
                 },
                 typenav : function(e){
                     var type = $(e.currentTarget).data("type");
+                    this.songCount = 0;
+                    this.totalpage = 0;
                     this.currentnav = type;
                     this.search();
                 },
@@ -349,7 +364,7 @@
                             return;
                         }
                     }
-                    var params = {action:"songinfo",songid:song.id};
+                    var params = {action:"songinfo",songid:song.id,albumid:song.al.id};
                     axios.post("/song.php",params)
                         .then(function(response){
                             var songinfo = response.data;
@@ -363,7 +378,7 @@
                                 title: song.name,
                                 author: arsname,
                                 url: songinfo.url,
-                                pic: 'http://p4.music.126.net/hg3mIdjZnFcBY3vFmD-dew==/109951162819344952.jpg?param=140y140',
+                                pic: songinfo.cover,
                                 lrc: songinfo.lrc
                             };
 

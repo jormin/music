@@ -16,11 +16,14 @@
     		break;
     	case 'songinfo':
     		$songid = trim($_params['songid']);
+            $albumid = trim($_params['albumid']);
     		$songinfo = json_decode($netease->url($songid),true);
     		if($songinfo['data'][0]){
     			$song['url'] = $songinfo['data'][0]['url'];
     			$lrcinfo = json_decode($netease->lyric($songid),true);
-    			$song['lrc'] = $lrcinfo['lrc']['lyric'];
+                $song['lrc'] = $lrcinfo['lrc']['lyric'];
+                $albuminfo = json_decode($netease->album($albumid),true);
+                $song['cover'] = $albuminfo['album']['picUrl'];
     		}else{
     			$song = null;
     		}
