@@ -5,13 +5,22 @@
     $mvinfo = json_decode($netease->mv($mvid),true);
     if($mvinfo['data']){
         $mv = $mvinfo['data'];
-        $parr = array("1080","720","480","240");
-        foreach ($parr as $key => $item) {
-            if($mv['brs'][$item]){
-                $mv['url'] = $mv['brs'][$item];
-                break;
-            }
+        $videos = array();
+        foreach ($mv['brs'] as $key => $videourl) {
+            $videos[] = array(
+                "profile"=> 113,
+                "width"=> $key*1.777,
+                "mime"=> "video/mp4",
+                "fps"=> 25,
+                "url"=> $videourl,
+                "cdn"=> "level3",
+                "quality"=> $key."p",
+                "id"=> 58145923,
+                "origin"=> "level3",
+                "height"=> $key
+                );
         }
+        $mv['url'] = $videos[0]['url'];
     }else{
         $mv = null;
     }
@@ -54,29 +63,7 @@
                     },
                     "origin": "level3"
                 },
-                "progressive": [{
-                    "profile": 113,
-                    "width": 1280,
-                    "mime": "video/mp4",
-                    "fps": 25,
-                    "url": "<?php echo $mv['url'];?>",
-                    "cdn": "level3",
-                    "quality": "720p",
-                    "id": 58145923,
-                    "origin": "level3",
-                    "height": 720
-                }, {
-                    "profile": 107,
-                    "width": 640,
-                    "mime": "video/mp4",
-                    "fps": 25,
-                    "url": "<?php echo $mv['url'];?>",
-                    "cdn": "level3",
-                    "quality": "360p",
-                    "id": 58145909,
-                    "origin": "level3",
-                    "height": 360
-                }]
+                "progressive": <?php echo json_encode($videos) ?>
             },
             "lang": "zh_CN",
             "ga_account": "UA-76641-35",
