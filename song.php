@@ -12,7 +12,7 @@
     			$page = 1;
     		}
     		$type = intval($_params['type']);
-    		$response = $netease->search($keyword,$limit,$limit*$page,$type);
+    		$response = $netease->search($keyword,$limit,($page-1)*$limit,$type);
     		break;
     	case 'songinfo':
     		$songid = trim($_params['songid']);
