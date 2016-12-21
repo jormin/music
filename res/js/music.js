@@ -1,3 +1,4 @@
+setlocalstorage("playsongs","");
 var music = new Vue({
     el : '#music',
     data : {
@@ -26,7 +27,8 @@ var music = new Vue({
             1004:"mv"
         },
         user:user,
-        aplayer:''
+        aplayer:'',
+        isdrag:false
     },
     created: function () {
         var vm = this;
@@ -37,12 +39,14 @@ var music = new Vue({
         }
         vm.aplayer = new AudioPlayer({playsongs:vm.playsongs});
         vm.aplayer.on("playing", function(){
-            var time = parseInt(vm.aplayer.audio.currentTime);
-            var minute = parseInt(time/60);
-            var second = time%60;
-            minute = (minute < 10) ? "0"+minute : minute;
-            second = (second < 10) ? "0"+second : second;
-            vm.cutime = minute+":"+second;
+            if(!vm.isdrag){
+                var time = parseInt(vm.aplayer.audio.currentTime);
+                var minute = parseInt(time/60);
+                var second = time%60;
+                minute = (minute < 10) ? "0"+minute : minute;
+                second = (second < 10) ? "0"+second : second;
+                vm.cutime = minute+":"+second;
+            }
         });
         vm.aplayer.on("ended",function(){
             vm.playnext();
@@ -86,6 +90,29 @@ var music = new Vue({
             vm.currentpercent = (parseFloat(cutimeint/totalint)*100).toFixed(2);
             var audio = vm.aplayer.audio;
             audio.readyState == 4 && (vm.currentbuffered = (audio.buffered.end(0)/audio.duration)*100);
+        },
+        cusong : function(){
+            var vm = this;
+            if(vm.cusong){
+                $('#timepoint').draggable({
+                    containment: $("#timeline"),axis:'x',cursor:'pointer'
+                }).bind('dragstart',function(event){
+                    vm.isdrag = true;
+                }).bind('drag',function(){
+                    var rate = parseFloat(parseInt($(this).css("left"))/parseInt($("#timeline").css("width")));
+                    var time = parseInt(rate*vm.cusong.dt);
+                    vm.cutime = vm.formatdate(time);
+                }).bind('dragstop',function(){
+                    vm.aplayer.play(vm.srctotime(vm.cutime));
+                    var _dom = $(this);
+                    setTimeout(function(){
+                        _dom.css("left","");
+                        vm.isdrag = false;
+                    },1000);
+                });
+            }else{
+                $('#timepoint').draggable("disable");
+            }
         }
     },
     methods : {
@@ -239,14 +266,16 @@ var music = new Vue({
                 nextlrctime = nextlrc.time;
             }
             if(lrctime < cutime && nextlrctime > cutime){
-                var culrcitem = $("div.listlyric").find("p:eq("+index+")");
-                var container = $("div.listlyric");
-                if(culrcitem.length > 0){
-                    var offset = index*parseInt(culrcitem.css("height")) - 100;
-                    if(offset > container.scrollTop() ){
-                        container.animate({
-                            scrollTop: offset
-                        });
+                if(!vm.isdrag){
+                    var culrcitem = $("div.listlyric").find("p:eq("+index+")");
+                    var container = $("div.listlyric");
+                    if(culrcitem.length > 0){
+                        var offset = index*parseInt(culrcitem.css("height")) - 100;
+                        if(offset > container.scrollTop() ){
+                            container.animate({
+                                scrollTop: offset
+                            });
+                        }
                     }
                 }
                 return true;

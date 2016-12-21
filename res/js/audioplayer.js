@@ -39,12 +39,11 @@ var AudioPlayer = function(options){
     */
     ap.play = function(time){
     	if(time){
-    		ap.audio.fastSeek();
-    		if('fastSeek' in audio){
-				ap.audio.fastSeek(time);
-			}else{
-				ap.audio.seekable(time);
-			}
+            if(time > ap.audio.duration){
+                return;
+            }
+            ap.audio.currentTime = time;
+            ap.audio.play();
     	}else{
 	    	if(ap.audio.paused){
 	    		ap.audio.play();

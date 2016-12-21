@@ -200,10 +200,10 @@
                             </span>
                         </div>
                         <div class="m-pbar" data-action="noop">
-                            <div class="barbg j-flag" id="auto-id-yf9d7ilde7ACtWkm">
+                            <div class="barbg j-flag" id="timeline">
                                 <div class="rdy" :style="'width:'+currentbuffered+'%'"></div>
                                 <div class="cur" :style="'width:'+currentpercent+'%'">
-                                    <span class="btn f-tdn f-alpha" id="auto-id-AS3UC7TvaWXEMwLr"> <i></i>
+                                    <span class="btn f-tdn f-alpha" id="timepoint" @dragover="dragtimepoint($event)"> <i></i>
                                     </span>
                                 </div>
                             </div>
@@ -302,6 +302,7 @@
     </div>
     <div id="cli_dialog_div"></div>
     <script src="/res/js/jquery.min.js"></script>
+    <script src="/res/vendor/jquery-ui-1.12.1/jquery-ui.min.js"></script>
     <script src="/res/js/vue.js"></script>
     <script src="/res/js/axios.min.js"></script>
     <script src="/res/js/lodash.min.js"></script>
