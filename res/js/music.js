@@ -1,4 +1,3 @@
-setlocalstorage("playsongs","");
 var music = new Vue({
     el : '#music',
     data : {
@@ -34,6 +33,7 @@ var music = new Vue({
         var playsongs = getlocalstorage("playsongs");
         if(playsongs){
             vm.playsongs = eval(playsongs);
+            vm.cusong = vm.playsongs[0];
         }
         vm.aplayer = new AudioPlayer({playsongs:vm.playsongs});
         vm.aplayer.on("playing", function(){
@@ -283,6 +283,7 @@ var music = new Vue({
         },
         playsong: _.debounce(function(song){
             var vm = this;
+            vm.pause = false;
             if(song.privilege.subp == "0"){
                 layer.msg("粗错咯，网易没这首歌的版权～");
                 return;
@@ -397,6 +398,26 @@ var music = new Vue({
             vm.cusong = '';
             vm.aplayer.remove();
             vm.pause = true;
+        },
+        removesong : function(index){
+            var vm = this;
+            var song = vm.aplayer.playsongs[index];
+            if(!song){
+                return;
+            }
+            vm.playsongs.splice(index,1);
+            vm.aplayer.playsongs.splice[index,1];
+            if(song.id == vm.cusong.id){
+                var nextsong = vm.playsongs[index];
+                if(nextsong){
+                    vm.aplayer.setmusic(index);
+                    vm.cusong = vm.playsongs[index];
+                }else{
+                    vm.cusong = '';
+                    vm.pause = true;
+                    vm.aplayer.pause();
+                }
+            }
         },
         enteraplayer : function(){
             var vm = this;

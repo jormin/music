@@ -11,7 +11,7 @@ var AudioPlayer = function(options){
 	if(options){
 		if(options.playsongs.length > 0){
 			ap.playsongs = options.playsongs;
-			ap.src = playsongs[0]['url'];
+			ap.audio.src = ap.playsongs[0]['url'];
 		}
 	}
 

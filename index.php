@@ -258,7 +258,7 @@
                                 <br>                            
                             </div>
                             <ul class="f-cb" v-else>
-                                <template v-cloak v-for="song in playsongs">
+                                <template v-cloak v-for="(song,index) in playsongs">
                                     <li :class="{'z-sel':(song.id == cusong.id)}" @click="playsong(song)">
                                         <div class="col col-1">
                                             <div class="playicn"></div>
@@ -277,9 +277,13 @@
                                         <div class="col col-4">
                                             <a href="javascript:;" @click.stop="searchalbum(song.al.id,song.al.name)">《{{song.al.name}}》</a>
                                         </div>
-                                        <div class="col col-5"></div>
-                                        <div class="col col-6">
+                                        <div class="col col-5">
                                             {{formatdate(song.dt)}}
+                                        </div>
+                                        <div class="col col-6">
+                                            <a href="javascript:;" class="clear" @click.stop="removesong(index)">
+                                                <span class="ico icn-del"></span>
+                                            </a>
                                         </div>
                                     </li>
                                 </template>
