@@ -63,3 +63,6 @@ a:hover{
     top:100px !important;
     // bottom:0 !important;
 }
+#audioplayer{
+    display:none;
+}
