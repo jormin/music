@@ -3,7 +3,7 @@
 
 	RewriteCond %{REQUEST_URI} !^/(.*).php
 	RewriteCond %{REQUEST_URI} !^/res
-	RewriteCond %{REQUEST_URI} !(.html|.js|.css|.jpg|.png|.gif|.bmp)$
+	RewriteCond %{REQUEST_URI} !(.html|.js|.css|.jpg|.png|.gif|.bmp|.ico)$
 	RewriteRule ^(.*)$ /index.php?dir=$1 [L]
 
 </IfModule>

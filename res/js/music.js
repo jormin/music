@@ -97,7 +97,6 @@ var music = new Vue({
                         scrollTop: offset
                     });
                 }
-                console.log(culrcitem.offset().top,container.offset().top,container.css("height"),parseInt(container.css("height"))/2,offset,parseInt(container.css("margin-top")),parseInt(container.css("margin-bottom")));
                 var index = $("div.listlyric").find("p").index(culrcitem);
                 var scrolltop = parseInt(container.css("height"))*(index/$("div.listlyric").find("p").length)+"px";
                 $("#lyric-scroll").css("top",scrolltop);

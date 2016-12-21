@@ -11,6 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <title>音乐</title>
+    <link rel="shortcut icon" type="image/ico" href="/favicon.ico">
     <style type="text/css">
         [v-cloak]{
             display:none;
@@ -262,7 +263,10 @@
                                         <div class="col col-1">
                                             <div class="playicn"></div>
                                         </div>
-                                        <div class="col col-2"><a href="javascript:;" @click.stop="searchsong(song.name)">{{song.name}}</a></div>
+                                        <div class="col col-2">
+                                            <a href="javascript:;" @click.stop="searchsong(song.name)">{{song.name}}</a>
+                                            <a :title="song.name" v-show="song.mv != ''" class="mv" @click.stop="playmv(song.mv,song.name)" target="_blank"></a>
+                                        </div>
                                         <div class="col col-3">
                                             <span :title="formatarname(song.ar)">
                                                 <template v-for="(artist,index) in song.ar">

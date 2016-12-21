@@ -7,6 +7,7 @@ var AudioPlayer = function(options){
 	var ap = new Object();
 	ap.audio = document.createElement("AUDIO");
 	ap.playsongs = [];
+    ap.audio.loop = true;
 	if(options){
 		if(options.playsongs.length > 0){
 			ap.playsongs = options.playsongs;

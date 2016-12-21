@@ -38,6 +38,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>用户登录</title>
+    <link rel="shortcut icon" type="image/ico" href="/favicon.ico">
     <!--[if lte IE 9]>
     <script type="text/javascript">location.href = '/unsupport-browser.html';</script>
     <![endif]-->
