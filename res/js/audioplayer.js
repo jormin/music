@@ -122,6 +122,16 @@ var AudioPlayer = function(options){
 				},1000);
 			}
 		}, false);
+    },
+
+    /**
+     * 销毁播放器
+     * @return {[type]} [description]
+     */
+    ap.remove = function(){
+        ap.playsongs = [];
+        ap.audio.pause();
+        ap.audio.src = null;
     }
 
 	return ap;

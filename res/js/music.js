@@ -400,7 +400,7 @@ var music = new Vue({
             var vm = this;
             vm.playsongs = [];
             vm.cusong = '';
-            vm.aplayer.audio.pause();
+            vm.aplayer.remove();
             vm.pause = true;
         },
         enteraplayer : function(){
