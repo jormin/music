@@ -21,6 +21,7 @@ var music = new Vue({
         },
         cutime : "00:00",
         isshowpanel : false,
+        blockaplayer : true,
         keymap : {
             1:"song",
             1004:"mv"
@@ -402,7 +403,19 @@ var music = new Vue({
             vm.cusong = '';
             vm.aplayer.audio.pause();
             vm.pause = true;
-        }
+        },
+        enteraplayer : function(){
+            var vm = this;
+            $("#aplayer").animate({"bottom":0});
+        },
+        leaveaplayer : function(){
+            var vm = this;
+            if(vm.blockaplayer){
+                return;
+            }
+            $("#aplayer").animate({"bottom":"-47px"});
+        },
+
     }
 });
 function init_videoplayer(mvid,name){

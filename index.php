@@ -167,12 +167,11 @@
                 <div class="j-flag"></div>
             </div>
         </div>
-        <div id="aplayer" class="aplayer"></div>
-        <div class="g-btmbar">
-            <div class="m-playbar m-playbar-lock" style="top: -53px; visibility: visible;">
+        <div class="g-btmbar" id="aplayer" @mouseenter="enteraplayer()" @mouseleave="leaveaplayer()">
+            <div class="m-playbar" :class="{'m-playbar-lock':blockaplayer,'m-playbar-unlock':!blockaplayer}" style="top: -53px; visibility: visible;">
                 <div class="updn">
                     <div class="left f-fl">
-                        <a href="javascript:;" class="btn" hidefocus="true" data-action="lock"></a>
+                        <a href="javascript:;" class="btn" hidefocus="true" @click="blockaplayer=!blockaplayer"></a>
                     </div>
                     <div class="right f-fl"></div>
                 </div>
