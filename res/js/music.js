@@ -86,21 +86,6 @@ var music = new Vue({
             vm.currentpercent = (parseFloat(cutimeint/totalint)*100).toFixed(2);
             var audio = vm.aplayer.audio;
             audio.readyState == 4 && (vm.currentbuffered = (audio.buffered.end(0)/audio.duration)*100);
-
-            $(".scrol scrol-1 j-flag");
-            var culrcitem = $("div.listlyric").find("p.z-sel");
-            var container = $("div.listlyric");
-            if(culrcitem.length > 0){
-                var offset = culrcitem.offset().top - container.offset().top - parseInt(container.css("height"))/2 + parseInt(container.css("margin-top")) + parseInt(container.css("margin-bottom"));
-                if(offset > container[0].scrollTop ){
-                    container.animate({
-                        scrollTop: offset
-                    });
-                }
-                var index = $("div.listlyric").find("p").index(culrcitem);
-                var scrolltop = parseInt(container.css("height"))*(index/$("div.listlyric").find("p").length)+"px";
-                $("#lyric-scroll").css("top",scrolltop);
-            }
         }
     },
     methods : {
@@ -254,6 +239,16 @@ var music = new Vue({
                 nextlrctime = nextlrc.time;
             }
             if(lrctime < cutime && nextlrctime > cutime){
+                var culrcitem = $("div.listlyric").find("p:eq("+index+")");
+                var container = $("div.listlyric");
+                if(culrcitem.length > 0){
+                    var offset = index*parseInt(culrcitem.css("height")) - 100;
+                    if(offset > container.scrollTop() ){
+                        container.animate({
+                            scrollTop: offset
+                        });
+                    }
+                }
                 return true;
             }else{
                 return false;

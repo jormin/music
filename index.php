@@ -184,7 +184,7 @@
                         <a href="javascript:;" hidefocus="true" @click="playtoggle()" class="ply j-flag" :class="{'pas':!pause}" title="播放/暂停(p)">播放/暂停</a>
                         <a href="javascript:;" hidefocus="true" @click="playnext()" class="nxt" title="下一首(ctrl+→)">下一首</a>
                     </div>
-                    <div class="head j-flag">
+                    <div class="head j-flag" @click="isshowpanel=!isshowpanel">
                         <img :src="cusong.cover">
                         <a href="javascript:;" hidefocus="true" class="mask"></a>
                     </div>
@@ -249,7 +249,7 @@
                             <span class="close" @click="isshowpanel=false">关闭</span>
                         </div>
                     </div>
-                    <div class="listbd">
+                    <div class="listbd" id="playlist-wrap">
                         <div class="msk"></div>
                         <div class="listbdc j-flag">
                             <div class="nocnt" v-if="playsongs.length == 0"> 
@@ -285,17 +285,11 @@
                                 </template>
                             </ul>
                         </div>
-                        <div class="bline j-flag">
-                            <span class="scrol" hidefocus="true" style="height: 68.9796px; display: block; top: 0px;"></span>
-                        </div>
                         <div class="msk2"></div>
                         <div class="listlyric j-flag">
                             <template v-cloak v-for="(item,index) in cusong.lrc">
                                 <p class="j-flag" :class="{'z-sel':iscurrentlrc(index)}" :data-time="item.time" v-if="formatlrc(item.lrc)">{{item.lrc}}</p>
                             </template>
-                        </div>
-                        <div class="bline bline-1 j-flag">
-                            <span class="scrol scrol-1 j-flag"  id="lyric-scroll" hidefocus="true" style="height: 84.7321px; display: block; top: 0px;"></span>
                         </div>
                     </div>
                 </div>

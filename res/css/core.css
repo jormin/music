@@ -6044,13 +6044,13 @@ div.m-emts {
 
 .m-playbar .listlyric {
     position: absolute;
-    right: 40px;
+    right: 0;
     top: 0;
     z-index: 4;
-    margin: 21px 0 20px 0;
-    // height: 219px;
-    width: 354px;
-    overflow: hidden;
+    margin: 0;
+    height: 219px;
+    width: 422px;
+    overflow: scroll;
 }
 
 .m-playbar .listlyric p {
