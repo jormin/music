@@ -224,8 +224,7 @@ var music = new Vue({
             var index = vm.aplayer.currentindex-1;
             var music = vm.songs[index];
             if(!music){
-                vm.pause = true;
-                vm.aplayer.pause();
+                layer.msg("前面没有歌曲咯～");
                 return;
             }
             vm.cusong = music;
@@ -236,9 +235,7 @@ var music = new Vue({
             var index = vm.aplayer.currentindex+1;
             var music = vm.playsongs[index];
             if(!music){
-                vm.pause = true;
-                vm.aplayer.pause();
-                vm.cusong = 0;
+                layer.msg("后面没有歌曲咯～");
                 return;
             }
             vm.cusong = music;

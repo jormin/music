@@ -250,7 +250,6 @@
                         </div>
                     </div>
                     <div class="listbd">
-                        <img class="imgbg j-flag" src="http://music.163.com/api/img/blur/123145302317578" style="top: -360px;">
                         <div class="msk"></div>
                         <div class="listbdc j-flag">
                             <div class="nocnt" v-if="playsongs.length == 0"> 
