@@ -92,13 +92,13 @@
                                 <div class="item f-cb h-flag" :class="{ even: iseven(index),'js-dis':isforbidden(song.privilege.subp)}">
                                     <div class="td">
                                         <div class="hd">
-                                            <a @click="playsong(song)" class="ply" :class="{'ply-z-slt':cusong.id==song.id}" title="播放"></a>
+                                            <a @click="playsong(song,1)" class="ply" :class="{'ply-z-slt':cusong.id==song.id}" title="播放"></a>
                                         </div>
                                     </div>
                                     <div class="td w0">
                                         <div class="sn">
                                             <div class="text">
-                                                <a href="javascript:;" @click="playsong(song)"> <b title="Coming Home"><span class="s-fc7">{{song.name}}</span></b> 
+                                                <a href="javascript:;" @click="playsong(song,1)"> <b title="Coming Home"><span class="s-fc7">{{song.name}}</span></b> 
                                                 </a>
                                                 <a :title="song.name" v-show="song.mv != ''" class="mv" @click="playmv(song.mv,song.name)" target="_blank"></a>
                                             </div>
@@ -217,20 +217,20 @@
                         <a href="javascript:;" hidefocus="true" data-action="share" class="icn icn-share" title="分享"></a>
                     </div>
                     <div class="ctrl f-fl f-pr j-flag">
-                        <div class="m-vol" style="visibility:hidden;">
+                        <div class="m-vol" v-show="setvolume">
                             <div class="barbg"></div>
-                            <div class="vbg j-t" id="auto-id-JKzbg3qIr3RMIwUN">
-                                <div class="curr j-t" style="height: 74.4px;"></div>
-                                <span class="btn f-alpha j-t" style="top: 16.2px;"></span>
+                            <div class="vbg j-t" id="volumeline">
+                                <div class="curr j-t" style="height: 90.6px;"></div>
+                                <span class="btn f-alpha j-t" style="top: 0px;" id="volumepoint" ></span>
                             </div>
                         </div>
-                        <a href="javascript:;" hidefocus="true" data-action="volume" class="icn icn-vol"></a>
-                        <a href="javascript:;" hidefocus="true" data-action="mode" class="icn icn-loop" title="循环"></a>
+                        <a href="javascript:;" hidefocus="true" @click="setvolume=!setvolume" class="icn icn-vol" :class="{'icn-volno':silence}"></a>
+                        <a href="javascript:;" hidefocus="true" @click="setaudiomode()" class="icn" :class="{'icn-loop':audiomode.currentmode==0,'icn-shuffle':audiomode.currentmode==1,'icn-one':audiomode.currentmode==2}" :title="audiomode.currentmodestr"></a>
                         <span class="add f-pr">
-                            <span class="tip" style="display: none;">已开始播放</span>
-                            <a href="javascript:;" title="播放列表" v-cloak hidefocus="true" @click="isshowpanel=!isshowpanel" class="icn icn-list s-fc3">{{playsongs.length}}</a>
+                            <span class="tip" v-cloak v-show="audiotip.showaudiotip">{{audiotip.tip}}</span>
+                            <a href="javascript:;" title="播放列表" v-cloak @click="isshowpanel=!isshowpanel" class="icn icn-list s-fc3"><span v-cloak>{{playsongs.length}}</span></a>
                         </span>
-                        <div class="tip tip-1" style="display:none;">循环</div>
+                        <div class="tip tip-1" v-cloak v-show="audiomode.showmodetip">{{audiomode.currentmodestr}}</div>
                     </div>
                 </div>
                 <div class="list" id="g_playlist" v-show="isshowpanel">

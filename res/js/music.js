@@ -22,6 +22,17 @@ var music = new Vue({
         cutime : "00:00",
         isshowpanel : false,
         blockaplayer : true,
+        setvolume : false,
+        silence:false,
+        audiomode:{
+            showmodetip:false,
+            currentmode:0,
+            currentmodestr:"循环"
+        },
+        audiotip:{
+            showaudiotip:false,
+            tip:''
+        },
         keymap : {
             1:"song",
             1004:"mv"
@@ -38,6 +49,9 @@ var music = new Vue({
             vm.cusong = vm.playsongs[0];
         }
         vm.aplayer = new AudioPlayer({playsongs:vm.playsongs});
+        vm.aplayer.on("error", function(){
+            layer.msg("加载歌曲粗错咯，刷新下页面试试吧～");
+        }),
         vm.aplayer.on("playing", function(){
             if(!vm.isdrag){
                 var time = parseInt(vm.aplayer.audio.currentTime);
@@ -47,8 +61,9 @@ var music = new Vue({
                 second = (second < 10) ? "0"+second : second;
                 vm.cutime = minute+":"+second;
             }
-        });
+        })
         vm.aplayer.on("ended",function(){
+            console.log(1111);
             vm.playnext();
         });
 
@@ -91,6 +106,27 @@ var music = new Vue({
             var audio = vm.aplayer.audio;
             audio.readyState == 4 && (vm.currentbuffered = (audio.buffered.end(0)/audio.duration)*100);
         },
+        'audiomode.currentmode' : function(){
+            var vm = this;
+            vm.aplayer.on("ended",function(){
+                if(vm.aplayer.currentindex == undefined){
+                    vm.aplayer.currentindex = 0;
+                }
+                switch(vm.audiomode.currentmode){
+                    case 0:
+                        vm.playnext();
+                        break;
+                    case 1:
+                        var index = Math.floor(Math.random()*vm.playsongs.length)+0;
+                        vm.cusong = vm.playsongs[index];
+                        vm.aplayer.setmusic(index);
+                        break;
+                    case 2:
+                        vm.aplayer.setmusic(vm.aplayer.currentindex);
+                        break;
+                }
+            });
+        },
         cusong : function(){
             var vm = this;
             if(vm.cusong){
@@ -109,6 +145,23 @@ var music = new Vue({
                         _dom.css("left","");
                         vm.isdrag = false;
                     },1000);
+                });
+                $('#volumepoint').draggable({
+                    containment: $("#volumeline").parent(),axis:'y',cursor:'pointer'
+                }).bind('drag',function(){
+                    var _dom = $(this);
+                    var voheight = 90.6-parseInt(_dom.css("top"));
+                    _dom.prev().css("height",voheight+"px");
+                    var rate = 1-parseFloat(parseInt(_dom.css("top"))/86).toFixed(1);
+                    if(rate > 1){
+                        rate = 1;
+                    }
+                    if(rate == 0){
+                        vm.silence = true;
+                    }else{
+                        vm.silence = false;
+                    }
+                    vm.aplayer.audio.volume = rate;
                 });
             }else{
                 $('#timepoint').draggable("disable");
@@ -233,8 +286,24 @@ var music = new Vue({
         },
         playpre : function(){
             var vm = this;
-            var index = vm.aplayer.currentindex-1;
-            var music = vm.songs[index];
+            if(vm.aplayer.currentindex == undefined){
+                vm.aplayer.currentindex = 0;
+            }
+            var index = vm.aplayer.currentindex;
+            switch(vm.audiomode.currentmode){
+                case 0:
+                case 2:
+                    if(index == 0){
+                        index = vm.playsongs.length-1;
+                    }else{
+                        index--;
+                    }
+                    break;
+                case 1:
+                    index = Math.floor(Math.random()*vm.playsongs.length)+0;
+                    break;
+            }
+            var music = vm.playsongs[index];
             if(!music){
                 layer.msg("前面没有歌曲咯～");
                 return;
@@ -244,7 +313,23 @@ var music = new Vue({
         },
         playnext : function(){
             var vm = this;
-            var index = vm.aplayer.currentindex+1;
+            if(vm.aplayer.currentindex == undefined){
+                vm.aplayer.currentindex = 0;
+            }
+            var index = vm.aplayer.currentindex;
+            switch(vm.audiomode.currentmode){
+                case 0:
+                case 2:
+                    if(index == vm.playsongs.length-1){
+                        index = 0;
+                    }else{
+                        index++;
+                    }
+                    break;
+                case 1:
+                    index = Math.floor(Math.random()*vm.playsongs.length)+0;
+                    break;
+            }
             var music = vm.playsongs[index];
             if(!music){
                 layer.msg("后面没有歌曲咯～");
@@ -310,7 +395,7 @@ var music = new Vue({
                 return false;
             }
         },
-        playsong: _.debounce(function(song){
+        playsong: _.debounce(function(song,showtip){
             var vm = this;
             vm.pause = false;
             if(song.privilege.subp == "0"){
@@ -348,6 +433,13 @@ var music = new Vue({
                     vm.aplayer.setmusic(index);
                     vm.cusong = song;
                     vm.pause = false;
+                    if(showtip == 1){
+                        vm.audiotip.tip = "已开始播放";
+                        vm.audiotip.showaudiotip = true;
+                        setTimeout(function(){
+                            vm.audiotip.showaudiotip = false;
+                        },2500);
+                    }
                 })
                 .catch(function(error){
                     vm.answer = '访问接口失败' + error
@@ -355,6 +447,9 @@ var music = new Vue({
         },500),
         initlrc : function(lrc){
             var vm = this;
+            if(!lrc){
+                return new Array;
+            }
             var lrcarrs = lrc.split("\n");
             var newlrcs = [];
             $(lrcarrs).each(function(index,item){
@@ -403,6 +498,11 @@ var music = new Vue({
                     vm.playsongs.push(song);
                     vm.aplayer.addmusic(song);
                     setlocalstorage("playsongs",JSON.stringify(vm.playsongs));
+                    vm.audiotip.tip = "已添加到播放列表";
+                    vm.audiotip.showaudiotip = true;
+                    setTimeout(function(){
+                        vm.audiotip.showaudiotip = false;
+                    },2500);
                 })
                 .catch(function(error){
                     vm.answer = '访问接口失败' + error
@@ -459,6 +559,20 @@ var music = new Vue({
             }
             $("#aplayer").animate({"bottom":"-47px"});
         },
+        setaudiomode : function(){
+            var vm = this;
+            var modes = ['循环','随机','单曲循环'];
+            if(vm.audiomode.currentmode == 2){
+                vm.audiomode.currentmode = 0;
+            }else{
+                vm.audiomode.currentmode++;
+            }
+            vm.audiomode.currentmodestr = modes[vm.audiomode.currentmode];
+            vm.audiomode.showmodetip = true;
+            setTimeout(function(){
+                vm.audiomode.showmodetip = false;
+            },2500);
+        }
 
     }
 });
