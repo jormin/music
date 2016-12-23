@@ -6035,7 +6035,7 @@ div.m-emts {
     z-index: 4;
     height: 260px;
     width: 553px;
-    overflow: hidden;
+    overflow: scroll;
 }
 
 .m-playbar .listbdc ul {
