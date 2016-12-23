@@ -63,8 +63,7 @@ var music = new Vue({
             }
         })
         vm.aplayer.on("ended",function(){
-            console.log(1111);
-            vm.playnext();
+                vm.playnext();
         });
 
         if(!vm.keyword){
@@ -114,15 +113,17 @@ var music = new Vue({
                 }
                 switch(vm.audiomode.currentmode){
                     case 0:
+                        vm.aplayer.audio.loop = false;
                         vm.playnext();
                         break;
                     case 1:
+                        vm.aplayer.audio.loop = false;
                         var index = Math.floor(Math.random()*vm.playsongs.length)+0;
                         vm.cusong = vm.playsongs[index];
                         vm.aplayer.setmusic(index);
                         break;
                     case 2:
-                        vm.aplayer.setmusic(vm.aplayer.currentindex);
+                        vm.aplayer.audio.loop = true;
                         break;
                 }
             });
