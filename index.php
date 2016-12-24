@@ -74,20 +74,10 @@
                             <em>歌单</em>
                         </a>
                     </li>
-                    <li>
-                        <a hidefocus="true" data-type="1009" href="javascript:void(0)" @click="typenav($event)" :class="{'z-slt':iscurrentnav(1009)}">
-                            <em>主播电台</em>
-                        </a>
-                    </li>
-                    <li>
-                        <a hidefocus="true" data-type="1002" href="javascript:void(0)" @click="typenav($event)" :class="{'z-slt':iscurrentnav(1002)}">
-                            <em>用户</em>
-                        </a>
-                    </li>
                 </ul>
                 <div class="ztag j-flag">
                     <div class="n-srchrst">
-                        <div class="srchsongst" v-if="iscurrentnav(1)">
+                        <div class="srchsongst" v-if="iscurrentnav(1) || iscurrentnav(1006)">
                             <template v-for="(song,index,key) in songs">
                                 <div class="item f-cb h-flag" :class="{ even: iseven(index),'js-dis':isforbidden(song.privilege.subp)}">
                                     <div class="td">
@@ -132,6 +122,48 @@
                                 </div>
                             </template>
                         </div>
+                        
+                        <div class="m-sgerlist m-sgerlist-1" v-if="iscurrentnav(100)">
+                            <ul class="m-cvrlst m-cvrlst-5 f-cb">
+                                <template v-for="(artist,index,key) in artists">
+                                    <li>
+                                        <div class="u-cover u-cover-5">
+                                            <a href="javascript:;">
+                                                <img :src="artist.picUrl">
+                                                <span :title="artist.name" class="msk"></span>
+                                            </a>
+                                        </div>
+                                        <p>
+                                            <a class="nm f-thide s-fc0" href="/artist?id=1015425" :title="artist.name" v-html="formatbykeyword(artist.name)">
+                                            </a>
+                                        </p>
+                                    </li>
+                                </template>
+                            </ul>
+                        </div>
+
+                        <ul class="m-cvrlst m-cvrlst-alb3 f-cb" v-if="iscurrentnav(10)">
+                            <template v-for="(album,index,key) in albums">
+                                <li>
+                                    <div class="u-cover u-cover-alb2">
+                                        <a href="javascript:;">
+                                            <img :src="album.picUrl">
+                                            <span :title="album.name" class="msk"></span>
+                                        </a>
+                                        <a title="播放" class="icon-play f-alpha f-fr " href="javascript:void(0)"></a>
+                                    </div>
+                                    <p class="dec">
+                                        <a href="/album?id=3280169" class="tit f-thide s-fc0" :title="album.nam" v-html="formatbykeyword(album.name)">
+                                        </a>
+                                    </p>
+                                    <p>
+                                        <span class="nm f-thide" :title="album.artist.name">
+                                            <a href="/artist?id=104700" class="s-fc3">album.artist.name</a>
+                                        </span>
+                                    </p>
+                                </li>
+                            </template>
+                        </ul>
 
                         <ul class="m-mvlist f-cb" v-if="iscurrentnav(1004)">
                             <template v-cloak v-for="(mv,index,key) in mvs">
@@ -159,6 +191,42 @@
                                 </li>
                             </template>
                         </ul>
+
+                        <table cellspacing="0" cellpadding="0" class="m-table m-table-2 m-table-2-cover" v-if="iscurrentnav(1000)">
+                            <tbody>
+                                <template v-cloak v-for="(playlist,index,key) in playlists">
+                                    <tr class="h-flag" id="auto-id-NipwAUdNTi1co4mC">
+                                        <td class="first w0">
+                                            <div class="hd"><span class="ply " title="播放" data-res-type="13" data-res-id="401446697" data-res-action="play"></span></div>
+                                        </td>
+                                        <td class="w7">
+                                            <div class="u-cover u-cover-3">
+                                                <a href="/playlist?id=401446697"><img :src="playlist.coverImgUrl"><span :title="playlist.name" class="msk"></span></a>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="f-cb">
+                                                <div class="opt hshow" style="display: none;">
+                                                    <a class="u-icn u-icn-81" href="javascript:;" title="添加到播放列表" hidefocus="true" data-res-type="13" data-res-id="401446697" data-res-action="addto"></a><span data-res-id="401446697" data-res-action="fav" data-res-type="13" class="icn icn-fav " title="收藏">收藏</span><span data-res-id="401446697" data-res-action="share" class="icn icn-share" data-res-type="13" title="分享">分享</span></div>
+                                                <div class="tt">
+                                                    <div class="ttc"><span class="txt"><a href="/playlist?id=401446697" :title="playlist.name" v-html="formatbykeyword(playlist.name)"></a>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="w11 s-fc4">{{playlist.trackCount}}首</td>
+                                        <td class="w4">
+                                            <div class="text"><span class="s-fc3">by</span>&nbsp;&nbsp;<a class="s-fc3" href="javascript:;" :title="playlist.creator.nickname">{{playlist.creator.nickname}}</a></div>
+                                        </td>
+                                        <td class="w6 s-fc4">收藏：<span id="flag_fav_count-401446697">{{formatnum(playlist.bookCount)}}</span></td>
+                                        <td class="last w6 s-fc4">收听：<span id="flag_play_count-401446697">{{formatnum(playlist.playCount)}}</span></td>
+                                    </tr>
+                                </template>
+                            </tbody>
+                        </table>
+
+
                     </div>
                 </div>
                 <div class="u-load s-fc4" v-show="isload"><i class="icn"></i> 加载中...</div>

@@ -13,6 +13,9 @@ var music = new Vue({
         songs : '',
         playsongs : [],
         mvs : '',
+        albums : '',
+        artists : '',
+        playlist : '',
         songCount : 0,
         totalpage : 0,
         cusong:{
@@ -35,7 +38,11 @@ var music = new Vue({
         },
         keymap : {
             1:"song",
-            1004:"mv"
+            10:"album",
+            100:"artist",
+            1000:'playlist',
+            1004:"mv",
+            1006:"song",
         },
         user:user,
         aplayer:'',
@@ -573,8 +580,18 @@ var music = new Vue({
             setTimeout(function(){
                 vm.audiomode.showmodetip = false;
             },2500);
+        },
+        formatbykeyword : function(str){
+            var vm = this;
+            return str.replace(vm.keyword,'<span class="s-fc7">'+vm.keyword+'</span>');
+        },
+        formatnum : function(num){
+            if(num < 10000){
+                return num;
+            }else{
+                return parseInt(num/10000)+"万";
+            }
         }
-
     }
 });
 function init_videoplayer(mvid,name){
