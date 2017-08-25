@@ -35,11 +35,8 @@ if($method == "GET"){
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>用户登录</title>
-    <!--[if lte IE 9]>
-    <script type="text/javascript">location.href = '/unsupport-browser.html';</script>
-    <![endif]-->
-    <link rel="stylesheet" href="/res/vendor.css">
-    <link rel="stylesheet" href="/res/app.css">
+    <link rel="stylesheet" href="/res/css/vendor.css">
+    <link rel="stylesheet" href="/res/css/app.css">
 </head>
 <body class="coding-center coding ng-scope random-background account-background" style="margin: 0px; padding: 0px; height: 100%; background: url(/res/login_background.jpg) 50% 50% / cover no-repeat fixed;">
 <div class="wrapper" id="loginwrap">
@@ -64,11 +61,11 @@ if($method == "GET"){
         </div>
     </div>
 </div>
-<script src="/res/jquery.min.js"></script>
-<script src="/res/vue.js"></script>
-<script src="/res/layer/layer.js"></script>
-<script src="/res/axios.min.js"></script>
-<script src="/res/lodash.min.js"></script>
+<script src="/res/js/jquery.min.js"></script>
+<script src="/res/js/vue.js"></script>
+<script src="/vendor/layer/layer.js"></script>
+<script src="/res/js/axios.min.js"></script>
+<script src="/res/js/lodash.min.js"></script>
 
 <script type="text/javascript">
     var loginvm = new Vue({
