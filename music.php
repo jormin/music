@@ -3,14 +3,14 @@
     include_once("./lib/init.php");
 function music_search($word, $type)
 {
-    $url = "http://music.163.com/api/search/pc";
+    $url = "https://music.163.com/api/search/pc";
     $post_data = array(
         's' => $word,
         'offset' => '0',
         'limit' => '20',
         'type' => $type,
     );
-    $referrer = "http://music.163.com/";
+    $referrer = "https://music.163.com/";
     $URL_Info = parse_url($url);
     $values = [];
     $result = '';
@@ -48,37 +48,37 @@ function music_search($word, $type)
 
 function get_music_info($music_id)
 {
-    $url = "http://music.163.com/api/song/detail/?id=" . $music_id . "&ids=%5B" . $music_id . "%5D";
+    $url = "https://music.163.com/api/song/detail/?id=" . $music_id . "&ids=%5B" . $music_id . "%5D";
     return curl_get($url);
 }
 
 function get_artist_album($artist_id, $limit)
 {
-    $url = "http://music.163.com/api/artist/albums/" . $artist_id . "?limit=" . $limit;
+    $url = "https://music.163.com/api/artist/albums/" . $artist_id . "?limit=" . $limit;
     return curl_get($url);
 }
 
 function get_album_info($album_id)
 {
-    $url = "http://music.163.com/api/album/" . $album_id;
+    $url = "https://music.163.com/api/album/" . $album_id;
     return curl_get($url);
 }
 
 function get_playlist_info($playlist_id)
 {
-    $url = "http://music.163.com/api/playlist/detail?id=" . $playlist_id;
+    $url = "https://music.163.com/api/playlist/detail?id=" . $playlist_id;
     return curl_get($url);
 }
 
 function get_music_lyric($music_id)
 {
-    $url = "http://music.163.com/api/song/lyric?os=pc&id=" . $music_id . "&lv=-1&kv=-1&tv=-1";
+    $url = "https://music.163.com/api/song/lyric?os=pc&id=" . $music_id . "&lv=-1&kv=-1&tv=-1";
     return curl_get($url);
 }
 
 function get_mv_info()
 {
-    $url = "http://music.163.com/api/mv/detail?id=319104&type=mp4";
+    $url = "https://music.163.com/api/mv/detail?id=319104&type=mp4";
     return curl_get($url);
 }
 
@@ -89,7 +89,7 @@ function get_mv_info()
  * @return [type]        [description]
  */
 function get_search($word,$limit){
-    $url = "http://music.163.com/api/search/get/web?csrf_token=";
+    $url = "https://music.163.com/api/search/get/web?csrf_token=";
     $curl = curl_init();
     $post_data = 'hlpretag=&hlposttag=&s='. $word . '&type=1&offset=0&total=true&limit=' . $limit;
     curl_setopt($curl, CURLOPT_URL,$url);
@@ -97,10 +97,10 @@ function get_search($word,$limit){
 
     $header =array(
         'Host: music.163.com',
-        'Origin: http://music.163.com',
+        'Origin: https://music.163.com',
         'User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.90 Safari/537.36',
         'Content-Type: application/x-www-form-urlencoded',
-        'Referer: http://music.163.com/search/',
+        'Referer: https://music.163.com/search/',
     );
 
     curl_setopt($curl, CURLOPT_HTTPHEADER, $header);

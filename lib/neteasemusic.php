@@ -8,7 +8,7 @@ class NeteaseMusic{
 	 * @return [type]       [description]
 	 */
 	public function music_search($word, $type, $limit=20, $offset=0){
-	    $url = "http://music.163.com/weapi/search/suggest/web?csrf_token=";
+	    $url = "https://music.163.com/weapi/search/suggest/web?csrf_token=";
 	    $params = "s=".$word."&offset=".$offset."&limit=".$limit."&type=".$type;
 	    $response = $this->http("post",$url,$params);
 	    return $result;
@@ -36,14 +36,14 @@ class NeteaseMusic{
             curl_setopt($ch, CURLOPT_POST, 1);
             curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
         }
-	    $refer = "http://music.163.com/";
+	    $refer = "https://music.163.com/";
 	    // $header[] = "Cookie: " . "appver=1.5.2;";
 	    $header =array(
 	        'Host: music.163.com',
-	        'Origin: http://music.163.com',
+	        'Origin: https://music.163.com',
 	        'User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.90 Safari/537.36',
 	        'Content-Type: application/x-www-form-urlencoded',
-	        'Referer: http://music.163.com/search/',
+	        'Referer: https://music.163.com/search/',
 	    );
 
 	    curl_setopt($ch, CURLOPT_HTTPHEADER, $header);

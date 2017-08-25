@@ -21,7 +21,7 @@ class NeteaseMusicAPI{
     protected $_VI='0102030405060708';
     protected $_USERAGENT='Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.157 Safari/537.36';
     protected $_COOKIE='os=pc; osver=Microsoft-Windows-10-Professional-build-10586-64bit; appver=2.0.3.131777; channel=netease; __remember_me=true';
-    protected $_REFERER='http://music.163.com/';
+    protected $_REFERER='https://music.163.com/';
     // use keygen secretKey
     protected $_secretKey='';
     protected $_encSecKey='';
@@ -94,7 +94,7 @@ class NeteaseMusicAPI{
 
     // main function
     public function search($s,$limit=30,$offset=0,$type=1){
-        $url='http://music.163.com/weapi/cloudsearch/get/web?csrf_token=';
+        $url='https://music.163.com/weapi/cloudsearch/get/web?csrf_token=';
         $data=array(
             's'=>$s,
             'type'=>$type,
@@ -113,7 +113,7 @@ class NeteaseMusicAPI{
     }
 
     public function artist($artist_id){
-        $url='http://music.163.com/weapi/v1/artist/'.$artist_id.'?csrf_token=';
+        $url='https://music.163.com/weapi/v1/artist/'.$artist_id.'?csrf_token=';
         $data=array(
             'csrf_token'=>'',
         );
@@ -127,7 +127,7 @@ class NeteaseMusicAPI{
     }
 
     public function album($album_id){
-        $url='http://music.163.com/weapi/v1/album/'.$album_id.'?csrf_token=';
+        $url='https://music.163.com/weapi/v1/album/'.$album_id.'?csrf_token=';
         $data=array(
             'csrf_token'=>'',
         );
@@ -141,7 +141,7 @@ class NeteaseMusicAPI{
     }
 
     public function detail($song_id){
-        $url='http://music.163.com/weapi/v3/song/detail?csrf_token=';
+        $url='https://music.163.com/weapi/v3/song/detail?csrf_token=';
         $data=array(
             'c'=>'['.json_encode(array('id'=>$song_id)).']',
             'csrf_token'=>'',
@@ -156,7 +156,7 @@ class NeteaseMusicAPI{
     }
 
     public function url($song_id,$br=999000){
-        $url='http://music.163.com/weapi/song/enhance/player/url?csrf_token=';
+        $url='https://music.163.com/weapi/song/enhance/player/url?csrf_token=';
         if(!is_array($song_id))$song_id=array($song_id);
         $data=array(
             'ids'=>$song_id,
@@ -167,7 +167,7 @@ class NeteaseMusicAPI{
     }
 
     public function playlist($playlist_id){
-        $url='http://music.163.com/weapi/v3/playlist/detail?csrf_token=';
+        $url='https://music.163.com/weapi/v3/playlist/detail?csrf_token=';
         $data=array(
             'id'=>$playlist_id,
             'n'=>1000,
@@ -183,7 +183,7 @@ class NeteaseMusicAPI{
     }
 
     public function lyric($song_id){
-        $url='http://music.163.com/weapi/song/lyric?csrf_token=';
+        $url='https://music.163.com/weapi/song/lyric?csrf_token=';
         $data=array(
             'id'=>$song_id,
             'os'=>'pc',
@@ -196,7 +196,7 @@ class NeteaseMusicAPI{
     }
 
     public function mv($mv_id){
-        $url='http://music.163.com/weapi/mv/detail?csrf_token=';
+        $url='https://music.163.com/weapi/mv/detail?csrf_token=';
         $data=array(
             'id'=>$mv_id,
             'csrf_token'=>'',
@@ -212,7 +212,7 @@ class NeteaseMusicAPI{
                 'songid'=>$vo["id"],
                 'name'=>$vo["name"],
                 'cover'=>'https://p4.music.126.net/'.self::Id2Url($vo['al']["pic_str"]).'/'.$vo['al']["pic_str"].'.jpg',
-                'url'=>'http://music.163.com/song/media/outer/url?id='.$vo["id"],
+                'url'=>'https://music.163.com/song/media/outer/url?id='.$vo["id"],
                 //'lyric'=>$vo["id"],
                 'artist'=>array(),
             );
