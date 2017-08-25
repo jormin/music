@@ -7,6 +7,7 @@
         $mv = $mvinfo['data'];
         $videos = array();
         foreach ($mv['brs'] as $key => $videourl) {
+            $videourl = str_replace('http:', 'https:', $videourl);
             $videos[] = array(
                 "profile"=> 113,
                 "width"=> $key*1.777,
@@ -75,7 +76,7 @@
                     "group": 0
                 }
             },
-            "referrer": "http://simplemodal.plasm.it/",
+            "referrer": "https://simplemodal.plasm.it/",
             "cookie_domain": ".vimeo.com",
             "timestamp": 1482025507,
             "expires": 3600,
@@ -261,7 +262,7 @@
     var s = function() {
             var a = e.createElement("div");
             a.innerHTML = "<svg/>";
-            return (a.firstChild && a.firstChild.namespaceURI) === "http://www.w3.org/2000/svg"
+            return (a.firstChild && a.firstChild.namespaceURI) === "https://www.w3.org/2000/svg"
         }();
     var l = /MSIE 9/.test(navigator.userAgent) && /Windows Phone/.test(navigator.userAgent);
     var c = /IE 10/.test(navigator.userAgent);
