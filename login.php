@@ -38,7 +38,7 @@ if($method == "GET"){
     <link rel="stylesheet" href="/res/css/vendor.css">
     <link rel="stylesheet" href="/res/css/app.css">
 </head>
-<body class="coding-center coding ng-scope random-background account-background" style="margin: 0px; padding: 0px; height: 100%; background: url(/res/login_background.jpg) 50% 50% / cover no-repeat fixed;">
+<body class="coding-center coding ng-scope random-background account-background" style="margin: 0px; padding: 0px; height: 100%; background: url(/res/images/login_background.jpg) 50% 50% / cover no-repeat fixed;">
 <div class="wrapper" id="loginwrap">
     <div class="account-flex-container ng-scope">
         <iframe src="about:blank" name="sink" style="display:none"></iframe>
@@ -63,7 +63,7 @@ if($method == "GET"){
 </div>
 <script src="/res/js/jquery.min.js"></script>
 <script src="/res/js/vue.js"></script>
-<script src="/vendor/layer/layer.js"></script>
+<script src="/res/vendor/layer/layer.js"></script>
 <script src="/res/js/axios.min.js"></script>
 <script src="/res/js/lodash.min.js"></script>
 
