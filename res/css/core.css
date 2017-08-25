@@ -318,19 +318,19 @@ table {
 }
 
 .f-curbig {
-    cursor: url(http://s2.music.126.net/style/web2/img/timeline/big.cur?551eb81042b764f8a598dc3ccad7e257), auto;
+    cursor: url(https://s2.music.126.net/style/web2/img/timeline/big.cur?551eb81042b764f8a598dc3ccad7e257), auto;
 }
 
 .f-cursml {
-    cursor: url(http://s2.music.126.net/style/web2/img/timeline/small.cur?2f9d244b26db592f1dd11b1a09e1b714), auto;
+    cursor: url(https://s2.music.126.net/style/web2/img/timeline/small.cur?2f9d244b26db592f1dd11b1a09e1b714), auto;
 }
 
 .f-curleft {
-    cursor: url(http://s2.music.126.net/style/web2/img/timeline/frd_show_left.cur?80cfe4e5dbe663e4465b1209a877edc3), auto;
+    cursor: url(https://s2.music.126.net/style/web2/img/timeline/frd_show_left.cur?80cfe4e5dbe663e4465b1209a877edc3), auto;
 }
 
 .f-curright {
-    cursor: url(http://s2.music.126.net/style/web2/img/timeline/frd_show_right.cur?c70404b2c2e4d2d14049241947d6105f), auto;
+    cursor: url(https://s2.music.126.net/style/web2/img/timeline/frd_show_right.cur?c70404b2c2e4d2d14049241947d6105f), auto;
 }
 
 .f-cd {
@@ -349,7 +349,7 @@ table {
 }
 
 .f-blank {
-    background-image: url(http://s2.music.126.net/style/web2/img/common/bg_blank.png?1ddb5179ac8354ec6f4e8f1a2c114412);
+    background-image: url(https://s2.music.126.net/style/web2/img/common/bg_blank.png?1ddb5179ac8354ec6f4e8f1a2c114412);
 }
 
 .f-mgt5 {
@@ -464,11 +464,11 @@ a.s-fc12:hover {
 
 .u-icn,
 .u-title-1 .out .icon {
-    background: url(http://s2.music.126.net/style/web2/img/icon.png?e31fe69c96967cbf720c2d26907dd777) no-repeat 0 9999px;
+    background: url(https://s2.music.126.net/style/web2/img/icon.png?e31fe69c96967cbf720c2d26907dd777) no-repeat 0 9999px;
 }
 
 .u-icn2 {
-    background: url(http://s2.music.126.net/style/web2/img/icon2.png?26ac063b6e9b25e4ecbe1da299149aaf) no-repeat 0 9999px;
+    background: url(https://s2.music.126.net/style/web2/img/icon2.png?26ac063b6e9b25e4ecbe1da299149aaf) no-repeat 0 9999px;
 }
 
 .u-btn2,
@@ -479,20 +479,20 @@ a.s-fc12:hover {
 .u-tag,
 .u-tag i,
 .u-btni-addply .ply {
-    background: url(http://s2.music.126.net/style/web2/img/button2.png?e64ce2cffc2374df83957dad2da33012) no-repeat 0 9999px;
+    background: url(https://s2.music.126.net/style/web2/img/button2.png?e64ce2cffc2374df83957dad2da33012) no-repeat 0 9999px;
 }
 
 .u-icn3,
 .u-hot,
 .u-hot i {
-    background: url(http://s2.music.126.net/style/web2/img/table.png?292e2f5cc57f8e68a5c71e97c58875ae) no-repeat 0 9999px;
+    background: url(https://s2.music.126.net/style/web2/img/table.png?292e2f5cc57f8e68a5c71e97c58875ae) no-repeat 0 9999px;
 }
 
 .u-cover .bottom,
 .u-cover .msk,
 .n-musicsd .lst .avatar .msk {
-    background: url(http://s2.music.126.net/style/web2/img/coverall.png?dba60d1aad5292d0bf849dc0395bb664) no-repeat;
-    _background: url(http://s2.music.126.net/style/web2/img/coverall_8.png?9d353aebafb66457e0e443ad86595ad0) no-repeat 0 9999px;
+    background: url(https://s2.music.126.net/style/web2/img/coverall.png?dba60d1aad5292d0bf849dc0395bb664) no-repeat;
+    _background: url(https://s2.music.126.net/style/web2/img/coverall_8.png?9d353aebafb66457e0e443ad86595ad0) no-repeat 0 9999px;
 }
 
 .u-cover .ply,
@@ -503,12 +503,12 @@ a.s-fc12:hover {
 .icn-vip,
 .icn-daren,
 .u-checkbox {
-    background: url(http://s2.music.126.net/style/web2/img/iconall.png?093d2ca8ebf8aea634068bd351f2f2fc) no-repeat;
-    _background: url(http://s2.music.126.net/style/web2/img/iconall_8.png?d8f6bf5bace4f0c90c3531b0bef2d0b1)
+    background: url(https://s2.music.126.net/style/web2/img/iconall.png?093d2ca8ebf8aea634068bd351f2f2fc) no-repeat;
+    _background: url(https://s2.music.126.net/style/web2/img/iconall_8.png?d8f6bf5bace4f0c90c3531b0bef2d0b1)
 }
 
 .u-load .icn {
-    background: url(http://s2.music.126.net/style/web2/img/loading.gif?ef5844d1e7bc2eac53cb2a84109d0ef4) no-repeat;
+    background: url(https://s2.music.126.net/style/web2/img/loading.gif?ef5844d1e7bc2eac53cb2a84109d0ef4) no-repeat;
 }
 
 .u-slg,
@@ -518,7 +518,7 @@ a.s-fc12:hover {
 .u-mlg,
 .u-mlg2,
 .u-errlg {
-    background: url(http://s2.music.126.net/style/web2/img/logo.png?124a121e5764282f45efc31dd916bd0d) no-repeat 0 9999px;
+    background: url(https://s2.music.126.net/style/web2/img/logo.png?124a121e5764282f45efc31dd916bd0d) no-repeat 0 9999px;
 }
 
 .u-btn,
@@ -526,43 +526,43 @@ div.u-page a,
 div.u-page a.js-selected,
 div.u-page a.znxt.js-disabled,
 div.u-page a.zprv.js-disabled {
-    background: url(http://s2.music.126.net/style/web2/img/button.png?1e3dc7f8e2ca9b3f3a102328b5d30d52) no-repeat 0 9999px;
+    background: url(https://s2.music.126.net/style/web2/img/button.png?1e3dc7f8e2ca9b3f3a102328b5d30d52) no-repeat 0 9999px;
 }
 
 .u-slt,
 .u-slt .btn {
-    background: url(http://s2.music.126.net/style/web2/img/sprite.png?700b806c1c896aead0dcc5bd29f2286f) no-repeat 0 9999px;
+    background: url(https://s2.music.126.net/style/web2/img/sprite.png?700b806c1c896aead0dcc5bd29f2286f) no-repeat 0 9999px;
 }
 
 .u-importlg {
-    background: url(http://s2.music.126.net/style/web2/img/import/import_logo.jpg?c94ff221fd259dc21468c4007d23ad74) no-repeat 0 9999px;
+    background: url(https://s2.music.126.net/style/web2/img/import/import_logo.jpg?c94ff221fd259dc21468c4007d23ad74) no-repeat 0 9999px;
 }
 
 .u-btnmp {
-    background: url(http://s2.music.126.net/style/web2/img/button3.png?6247328a37506bddc165df9ba82006a7) no-repeat 0 9999px;
+    background: url(https://s2.music.126.net/style/web2/img/button3.png?6247328a37506bddc165df9ba82006a7) no-repeat 0 9999px;
 }
 
 .u-btn5,
 .u-btn5 em,
 .u-btn5 s {
-    background: url(http://s2.music.126.net/style/web2/img/button5.png?44fab0a154725c0082fa8fa4720b33b2) no-repeat 0 9999px;
+    background: url(https://s2.music.126.net/style/web2/img/button5.png?44fab0a154725c0082fa8fa4720b33b2) no-repeat 0 9999px;
 }
 
 .u-date,
 .u-date .mask {
-    background: url(http://s2.music.126.net/style/web2/img/date.png?7c3658365286ae4a0ca8d4a7e225813e) no-repeat 0 9999px;
+    background: url(https://s2.music.126.net/style/web2/img/date.png?7c3658365286ae4a0ca8d4a7e225813e) no-repeat 0 9999px;
 }
 
 .u-msk {
-    background: url(http://s2.music.126.net/style/web2/img/mask.png?b9fc8ce30eef44a8c4479508e212845f) no-repeat 0 9999px;
+    background: url(https://s2.music.126.net/style/web2/img/mask.png?b9fc8ce30eef44a8c4479508e212845f) no-repeat 0 9999px;
 }
 
 .u-face .msk {
-    _background: url(http://s2.music.126.net/style/web2/img/ie6/head2.png?e57ea1c48e59457eb6a5a86a5e5f0f96) no-repeat;
+    _background: url(https://s2.music.126.net/style/web2/img/ie6/head2.png?e57ea1c48e59457eb6a5a86a5e5f0f96) no-repeat;
 }
 
 .u-cover-tiny .ply {
-    _background: url(http://s2.music.126.net/style/web2/img/ie6/icn_ply.png?acd6dab95c0465126aadc0491334e1ee) no-repeat;
+    _background: url(https://s2.music.126.net/style/web2/img/ie6/icn_ply.png?acd6dab95c0465126aadc0491334e1ee) no-repeat;
 }
 
 .u-cover-0 .icon-play,
@@ -570,7 +570,7 @@ div.u-page a.zprv.js-disabled {
 .u-cover-10 .icon-play,
 .u-cover-11 .icon-play,
 .u-cover-12 .icon-play {
-    _background: url(http://s2.music.126.net/style/web2/img/ie6/icn_ply.png?cea8aff7bffe8438cb981e570e2e9b62) no-repeat;
+    _background: url(https://s2.music.126.net/style/web2/img/ie6/icn_ply.png?cea8aff7bffe8438cb981e570e2e9b62) no-repeat;
 }
 
 .u-cover-0 .icon-play:hover,
@@ -578,69 +578,69 @@ div.u-page a.zprv.js-disabled {
 .u-cover-10 .icon-play:hover,
 .u-cover-11 .icon-play:hover,
 .u-cover-12 .icon-play:hover {
-    _background: url(http://s2.music.126.net/style/web2/img/ie6/icn_ply_hvr.png?9f76e1aad600fc43eff65553462b2ad7) no-repeat;
+    _background: url(https://s2.music.126.net/style/web2/img/ie6/icn_ply_hvr.png?9f76e1aad600fc43eff65553462b2ad7) no-repeat;
 }
 
 .u-cover-alb2 .icon-play,
 .u-cover-alb3 .icon-play,
 .u-cover-9 .icon-play {
-    _background: url(http://s2.music.126.net/style/web2/img/ie6/icn_ply2.png?46e6b318105b8ae900855585a69dd866) no-repeat
+    _background: url(https://s2.music.126.net/style/web2/img/ie6/icn_ply2.png?46e6b318105b8ae900855585a69dd866) no-repeat
 }
 
 .u-cover-alb2 .icon-play:hover,
 .u-cover-alb3 .icon-play:hover,
 .u-cover-9 .icon-play:hover {
-    _background: url(http://s2.music.126.net/style/web2/img/ie6/icn_ply2_hvr.png?76c443a3f377ee084eb0444a35f7f89b) no-repeat;
+    _background: url(https://s2.music.126.net/style/web2/img/ie6/icn_ply2_hvr.png?76c443a3f377ee084eb0444a35f7f89b) no-repeat;
 }
 
 .u-cover-6 .msk {
-    _background: url(http://s2.music.126.net/style/web2/img/ie6/singlecover.png?191a040b1b85f1e6de82a23fba3794d0)
+    _background: url(https://s2.music.126.net/style/web2/img/ie6/singlecover.png?191a040b1b85f1e6de82a23fba3794d0)
 }
 
 .u-cover-7 .icon-play {
-    _background: url(http://s2.music.126.net/style/web2/img/ie6/icn_ply5.png?af0fd50e10667b5f70a9f9e49d7210fa)
+    _background: url(https://s2.music.126.net/style/web2/img/ie6/icn_ply5.png?af0fd50e10667b5f70a9f9e49d7210fa)
 }
 
 .u-cover-7 .icon-play:hover {
-    _background: url(http://s2.music.126.net/style/web2/img/ie6/icn_ply5_hvr.png?40ecda608e966b9c6a4622425ddbdd57)
+    _background: url(https://s2.music.126.net/style/web2/img/ie6/icn_ply5_hvr.png?40ecda608e966b9c6a4622425ddbdd57)
 }
 
 .u-cover-8 .icon-play,
 .u-cover-13 .icon-play {
-    _background: url(http://s2.music.126.net/style/web2/img/ie6/icn_ply4.png?cd4cb1fb2209a4de1d94bc333e12c5e0) no-repeat;
+    _background: url(https://s2.music.126.net/style/web2/img/ie6/icn_ply4.png?cd4cb1fb2209a4de1d94bc333e12c5e0) no-repeat;
 }
 
 .u-cover-8 .icon-play:hover,
 .u-cover-13 .icon-play:hover {
-    _background: url(http://s2.music.126.net/style/web2/img/ie6/icn_ply4_hvr.png?d7437e436fadf691a8a3dfa63b188f1d) no-repeat;
+    _background: url(https://s2.music.126.net/style/web2/img/ie6/icn_ply4_hvr.png?d7437e436fadf691a8a3dfa63b188f1d) no-repeat;
 }
 
 .icn-vip {
-    _background: url(http://s2.music.126.net/style/web2/img/ie6/icn_vip.png?e33442d82432dcad7d18c368abc80969) no-repeat;
+    _background: url(https://s2.music.126.net/style/web2/img/ie6/icn_vip.png?e33442d82432dcad7d18c368abc80969) no-repeat;
 }
 
 .icn-daren {
-    _background: url(http://s2.music.126.net/style/web2/img/ie6/icn_daren.png?d06d3ee011cf76600ea4ad73874e3c22) no-repeat;
+    _background: url(https://s2.music.126.net/style/web2/img/ie6/icn_daren.png?d06d3ee011cf76600ea4ad73874e3c22) no-repeat;
 }
 
 .u-date {
-    _background: url(http://s2.music.126.net/style/web2/img/ie6/date.png?22c97fa6053582840359f9350a9eb382) no-repeat;
+    _background: url(https://s2.music.126.net/style/web2/img/ie6/date.png?22c97fa6053582840359f9350a9eb382) no-repeat;
 }
 
 .u-date .mask {
-    _background: url(http://s2.music.126.net/style/web2/img/ie6/date_mask.png?06ef64bc67e8f4b61a1d693e41e29b5e) no-repeat;
+    _background: url(https://s2.music.126.net/style/web2/img/ie6/date_mask.png?06ef64bc67e8f4b61a1d693e41e29b5e) no-repeat;
 }
 
 .u-date-2 {
-    _background: url(http://s2.music.126.net/style/web2/img/ie6/date2.png?d36efd338ab154a66eaebb7e7c5f3df7) no-repeat;
+    _background: url(https://s2.music.126.net/style/web2/img/ie6/date2.png?d36efd338ab154a66eaebb7e7c5f3df7) no-repeat;
 }
 
 .u-date-2 .mask {
-    _background: url(http://s2.music.126.net/style/web2/img/ie6/date2_mask.png?7d59bb6472776c6c5b3ef14fe0eaa9c0) no-repeat;
+    _background: url(https://s2.music.126.net/style/web2/img/ie6/date2_mask.png?7d59bb6472776c6c5b3ef14fe0eaa9c0) no-repeat;
 }
 
 .u-icn2-music {
-    _background: url(http://s2.music.126.net/style/web2/img/ie6/icn_musician.png?849301f1e0b3acfb7c2dc6b61fca5f5a) no-repeat !important;
+    _background: url(https://s2.music.126.net/style/web2/img/ie6/icn_musician.png?849301f1e0b3acfb7c2dc6b61fca5f5a) no-repeat !important;
 }
 
 .u-hot {
@@ -1621,7 +1621,7 @@ textarea:-ms-input-placeholder {
 .u-icn-68 {
     width: 12px;
     height: 12px;
-    background: url(http://s2.music.126.net/style/web2/img/ie6/dot2.png?11625518ad2faed0fb7888a1c4a1406b) no-repeat;
+    background: url(https://s2.music.126.net/style/web2/img/ie6/dot2.png?11625518ad2faed0fb7888a1c4a1406b) no-repeat;
 }
 
 .u-icn-69,
@@ -2184,7 +2184,7 @@ a:hover .u-icn-86 {
     left: 0;
     height: 22px;
     width: 22px;
-    background: url(http://s2.music.126.net/style/web2/img/ie6/bub.png?a25ec1d610b56e39788fd10a38cb31d5) no-repeat;
+    background: url(https://s2.music.126.net/style/web2/img/ie6/bub.png?a25ec1d610b56e39788fd10a38cb31d5) no-repeat;
 }
 
 .u-bub-1,
@@ -2193,7 +2193,7 @@ a:hover .u-icn-86 {
 }
 
 .u-bub-1 b {
-    background-image: url(http://s2.music.126.net/style/web2/img/ie6/bub2.png?a9cc3ccdfa5ab908621aeec38524680c);
+    background-image: url(https://s2.music.126.net/style/web2/img/ie6/bub2.png?a9cc3ccdfa5ab908621aeec38524680c);
 }
 
 .u-bub-2,
@@ -2202,7 +2202,7 @@ a:hover .u-icn-86 {
 }
 
 .u-bub-2 b {
-    background-image: url(http://s2.music.126.net/style/web2/img/ie6/bub3.png?c029c28102bade6d8cf0553625c87cf2);
+    background-image: url(https://s2.music.126.net/style/web2/img/ie6/bub3.png?c029c28102bade6d8cf0553625c87cf2);
 }
 
 .u-date {
@@ -4475,24 +4475,24 @@ div.u-page a.znxt.js-disabled:hover {
 .m-mail,
 .m-tophead .head .mask,
 .m-msg {
-    background: url(http://s2.music.126.net/style/web2/img/frame/topbar.png?5ba76dbe18b9caa0b5febed198efa51f) no-repeat 0 9999px;
+    background: url(https://s2.music.126.net/style/web2/img/frame/topbar.png?5ba76dbe18b9caa0b5febed198efa51f) no-repeat 0 9999px;
 }
 
 .m-tlist .icn,
 .m-tlist .arr {
-    background: url(http://s2.music.126.net/style/web2/img/frame/toplist.png?e2591b6a07319ee57b8eb3bceb6f7682) no-repeat 0 9999px;
+    background: url(https://s2.music.126.net/style/web2/img/frame/toplist.png?e2591b6a07319ee57b8eb3bceb6f7682) no-repeat 0 9999px;
 }
 
 .m-subnav .shadow {
-    background: url(http://s2.music.126.net/style/web2/img/frame/navshadow.png?2b9f4f1bf21158c4ab05d0fdca074e1d) repeat-x;
+    background: url(https://s2.music.126.net/style/web2/img/frame/navshadow.png?2b9f4f1bf21158c4ab05d0fdca074e1d) repeat-x;
 }
 
 .m-pbar .barbg,
 .m-pbar .cur,
 .m-pbar .rdy,
 .m-pbar .left {
-    background: url(http://s2.music.126.net/style/web2/img/frame/statbar.png?cbb0e870dd0967d276ab11e6fe27a7f3) no-repeat 0 9999px;
-    _background-image: url(http://s2.music.126.net/style/web2/img/frame/statbar_8.png?7f3dcefb5e2adb54795237b40ad6b933);
+    background: url(https://s2.music.126.net/style/web2/img/frame/statbar.png?cbb0e870dd0967d276ab11e6fe27a7f3) no-repeat 0 9999px;
+    _background-image: url(https://s2.music.126.net/style/web2/img/frame/statbar_8.png?7f3dcefb5e2adb54795237b40ad6b933);
 }
 
 .m-playbar .updn .left,
@@ -4508,27 +4508,27 @@ div.u-page a.znxt.js-disabled:hover {
 .m-playbar .words .mv,
 .m-vol .barbg,
 .m-playbar .words .src {
-    background: url(http://s2.music.126.net/style/web2/img/frame/playbar.png?29bb742f2028b65673c1579827379eed) no-repeat 0 9999px;
-    _background-image: url(http://s2.music.126.net/style/web2/img/frame/playbar_8.png?ed4ca1358eef11559f576b6fa9ceabe5);
+    background: url(https://s2.music.126.net/style/web2/img/frame/playbar.png?29bb742f2028b65673c1579827379eed) no-repeat 0 9999px;
+    _background-image: url(https://s2.music.126.net/style/web2/img/frame/playbar_8.png?ed4ca1358eef11559f576b6fa9ceabe5);
 }
 
 .m-playbar .listhd,
 .m-playbar .listbd {
-    background: url(http://s2.music.126.net/style/web2/img/frame/playlist_bg.png?b935d867e424b7203cb28ba1d46fc435) no-repeat;
-    _background-image: url(http://s2.music.126.net/style/web2/img/frame/playlist_bg_8.png?74f81346e0aff6fde8826e25930b504e);
+    background: url(https://s2.music.126.net/style/web2/img/frame/playlist_bg.png?b935d867e424b7203cb28ba1d46fc435) no-repeat;
+    _background-image: url(https://s2.music.126.net/style/web2/img/frame/playlist_bg_8.png?74f81346e0aff6fde8826e25930b504e);
 }
 
 .m-playbar .list .close,
 .m-playbar .playicn,
 .m-playbar .ico {
-    background: url(http://s2.music.126.net/style/web2/img/frame/playlist.png?4b2474568001d19d87c768284e91aefc) no-repeat 0 9999px;
-    _background-image: url(http://s2.music.126.net/style/web2/img/frame/playlist_8.png?66feb31fe3fbe9b340a072b8e95a8109);
+    background: url(https://s2.music.126.net/style/web2/img/frame/playlist.png?4b2474568001d19d87c768284e91aefc) no-repeat 0 9999px;
+    _background-image: url(https://s2.music.126.net/style/web2/img/frame/playlist_8.png?66feb31fe3fbe9b340a072b8e95a8109);
 }
 
 .m-pbar .btn,
 .m-vol .btn {
-    background: url(http://s2.music.126.net/style/web2/img/iconall.png?b421d1c0c277e0bbbd1975003f8027d6) no-repeat;
-    _background: url(http://s2.music.126.net/style/web2/img/iconall_8.png?8faad08fafe78bc867f3dfb89746e86a)
+    background: url(https://s2.music.126.net/style/web2/img/iconall.png?b421d1c0c277e0bbbd1975003f8027d6) no-repeat;
+    _background: url(https://s2.music.126.net/style/web2/img/iconall_8.png?8faad08fafe78bc867f3dfb89746e86a)
 }
 
 .m-table th,
@@ -4538,13 +4538,13 @@ div.u-page a.znxt.js-disabled:hover {
 .m-table .mv,
 .m-table .icn,
 .m-info .edit {
-    background: url(http://s2.music.126.net/style/web2/img/table.png?ef9d36af079285586fb484d671435596) no-repeat 0 9999px;
+    background: url(https://s2.music.126.net/style/web2/img/table.png?ef9d36af079285586fb484d671435596) no-repeat 0 9999px;
 }
 
 div.m-layer .zbar,
 div.m-layer .zcls {
-    background: url(http://s2.music.126.net/style/web2/img/layer/layer.png?a71d65b12c6bbee4f01a2f222073a9f2) no-repeat 0 9999px;
-    _background-image: url(http://s2.music.126.net/style/web2/img/layer/layer_8.png?16f4ca403f97ab1e5785b66d774cf913);
+    background: url(https://s2.music.126.net/style/web2/img/layer/layer.png?a71d65b12c6bbee4f01a2f222073a9f2) no-repeat 0 9999px;
+    _background-image: url(https://s2.music.126.net/style/web2/img/layer/layer_8.png?16f4ca403f97ab1e5785b66d774cf913);
 }
 
 .m-tabs,
@@ -4552,12 +4552,12 @@ div.m-layer .zcls {
 .m-tabs em,
 .m-tabs1 a,
 .m-tabs1 em {
-    background: url(http://s2.music.126.net/style/web2/img/tab.png?64b3b50c17c94d1464ed2e51f1061e02) no-repeat 0 9999px;
+    background: url(https://s2.music.126.net/style/web2/img/tab.png?64b3b50c17c94d1464ed2e51f1061e02) no-repeat 0 9999px;
 }
 
 div.m-emts {
-    background: url(http://s2.music.126.net/style/web2/img/emtbg.png?c57186d6b829924a0917f5ca152af64d) no-repeat;
-    _background: url(http://s2.music.126.net/style/web2/img/emtbg_8.png?14b01e481ab6d1d057039c403216a484) no-repeat;
+    background: url(https://s2.music.126.net/style/web2/img/emtbg.png?c57186d6b829924a0917f5ca152af64d) no-repeat;
+    _background: url(https://s2.music.126.net/style/web2/img/emtbg_8.png?14b01e481ab6d1d057039c403216a484) no-repeat;
 }
 
 .m-back,
@@ -4567,28 +4567,28 @@ div.m-emts {
 .m-pubcode .code,
 .m-multi .bg,
 .m-multi .bg a:hover {
-    background: url(http://s2.music.126.net/style/web2/img/sprite.png?796070eaea47d5a20c4f5ecfda3a2efc) no-repeat 0 9999px;
+    background: url(https://s2.music.126.net/style/web2/img/sprite.png?796070eaea47d5a20c4f5ecfda3a2efc) no-repeat 0 9999px;
 }
 
 .m-special .mv .msk {
-    background: url(http://s2.music.126.net/style/web2/img/spe_mv_msk.png?b5b609e5582f403190d8bd9d44b1b226) repeat-x;
+    background: url(https://s2.music.126.net/style/web2/img/spe_mv_msk.png?b5b609e5582f403190d8bd9d44b1b226) repeat-x;
     _background: none;
 }
 
 .m-pbar .btn {
-    _background: url(http://s2.music.126.net/style/web2/img/ie6/ply_btn.png?f3088a7dff9ec791c43f2531ec9cd056) no-repeat;
+    _background: url(https://s2.music.126.net/style/web2/img/ie6/ply_btn.png?f3088a7dff9ec791c43f2531ec9cd056) no-repeat;
 }
 
 .m-pbar .btn:hover {
-    _background: url(http://s2.music.126.net/style/web2/img/ie6/ply_btn_hvr.png?cc64a6ca267347ebcdea8890fe0fc073) no-repeat;
+    _background: url(https://s2.music.126.net/style/web2/img/ie6/ply_btn_hvr.png?cc64a6ca267347ebcdea8890fe0fc073) no-repeat;
 }
 
 .m-vol .btn {
-    _background: url(http://s2.music.126.net/style/web2/img/ie6/vol_btn.png?73911374eeab10719a7b09d685f38f91) no-repeat;
+    _background: url(https://s2.music.126.net/style/web2/img/ie6/vol_btn.png?73911374eeab10719a7b09d685f38f91) no-repeat;
 }
 
 .m-vol .btn:hover {
-    _background: url(http://s2.music.126.net/style/web2/img/ie6/vol_btn_hvr.png?53c3c36176fb802c2702862d75d5cbf3) no-repeat;
+    _background: url(https://s2.music.126.net/style/web2/img/ie6/vol_btn_hvr.png?53c3c36176fb802c2702862d75d5cbf3) no-repeat;
 }
 
 .m-top {
@@ -5805,7 +5805,7 @@ div.m-emts {
     top: 5px;
     width: 12px;
     height: 12px;
-    background: url(http://s2.music.126.net/style/web2/img/outchain/loading.gif?2046a66d3ef394ba7eb46ce2fa50469d);
+    background: url(https://s2.music.126.net/style/web2/img/outchain/loading.gif?2046a66d3ef394ba7eb46ce2fa50469d);
 }
 
 .m-pbar .z-load:hover {
@@ -7800,7 +7800,7 @@ div.m-layer .m-cpctrl {
     width: 50px;
     height: 50px;
     margin: 0 auto;
-    background: url(http://s2.music.126.net/style/web2/img/sns.png?d1834df14a702a1d8ba987aad202cb8d) no-repeat 0 9999px;
+    background: url(https://s2.music.126.net/style/web2/img/sns.png?d1834df14a702a1d8ba987aad202cb8d) no-repeat 0 9999px;
 }
 
 .n-outshr .rr {
@@ -8220,7 +8220,7 @@ div.m-layer .m-cpctrl {
 }
 
 .m-lycifo .cvrwrap .icon {
-    background: url(http://s2.music.126.net/style/web2/img/icon.png?136d6dc5838cb0568922c905e552a14d) no-repeat 0 9999px;
+    background: url(https://s2.music.126.net/style/web2/img/icon.png?136d6dc5838cb0568922c905e552a14d) no-repeat 0 9999px;
     background-position: -34px -863px;
     float: left;
     width: 20px;
@@ -8361,7 +8361,7 @@ div.m-layer .m-cpctrl {
     float: left;
     width: 10px;
     height: 11px;
-    background: url(http://s2.music.126.net/style/web2/img/icon2.png?7831cafa7dad60576b3e557f55819b59) no-repeat -9999px -9999px;
+    background: url(https://s2.music.126.net/style/web2/img/icon2.png?7831cafa7dad60576b3e557f55819b59) no-repeat -9999px -9999px;
     opacity: 0.9;
 }
 
@@ -9205,7 +9205,7 @@ div.m-layer .m-cpctrl {
     height: 15px;
     float: left;
     margin-right: 4px;
-    background: url(http://s2.music.126.net/style/web2/img/table.png?c8ea0c09d03cc1349a233ff87ddf677a) no-repeat -83px -174px;
+    background: url(https://s2.music.126.net/style/web2/img/table.png?c8ea0c09d03cc1349a233ff87ddf677a) no-repeat -83px -174px;
 }
 
 .m-dynamic .darr {
@@ -9720,7 +9720,7 @@ div.m-layer .m-cpctrl {
     position: absolute;
     top: -22px;
     height: 84px;
-    background: url(http://s2.music.126.net/style/web2/img/highlight.png?da9658b9c107065fc4eb862a14f7b284);
+    background: url(https://s2.music.126.net/style/web2/img/highlight.png?da9658b9c107065fc4eb862a14f7b284);
     left: -17px;
     width: 480px;
 }
@@ -9753,7 +9753,7 @@ div.m-layer .m-cpctrl {
     height: 60px;
     float: left;
     cursor: move;
-    background: url(http://s2.music.126.net/style/web2/img/icon2.png?b047fc5981421fefd2b8936fd6703171) no-repeat -140px -380px;
+    background: url(https://s2.music.126.net/style/web2/img/icon2.png?b047fc5981421fefd2b8936fd6703171) no-repeat -140px -380px;
 }
 
 .m-lyshare .pics li+li {
@@ -9761,7 +9761,7 @@ div.m-layer .m-cpctrl {
 }
 
 .m-lyshare .pics li .icn {
-    background: url(http://s2.music.126.net/style/web2/img/loading3.gif?d7235bcdc27ce895eb74802ce2b0df75) no-repeat center;
+    background: url(https://s2.music.126.net/style/web2/img/loading3.gif?d7235bcdc27ce895eb74802ce2b0df75) no-repeat center;
 }
 
 .m-lyshare .pics li.z-sel {
@@ -9946,7 +9946,7 @@ div.m-layer .m-cpctrl {
     margin-left: 15px;
     width: 14px;
     height: 14px;
-    background: url(http://s2.music.126.net/style/web2/img/icon2.png?61cbd332ab1dfa6385a94828648d5c5d) no-repeat -80px -340px;
+    background: url(https://s2.music.126.net/style/web2/img/icon2.png?61cbd332ab1dfa6385a94828648d5c5d) no-repeat -80px -340px;
 }
 
 .m-lysearch .srchlist .ply.z-pause {
@@ -9954,7 +9954,7 @@ div.m-layer .m-cpctrl {
 }
 
 .m-lysearch .srchlist .ply.z-loading {
-    background: url(http://s2.music.126.net/style/web2/img/loading2.gif?237447b1c0f6d7d691e8a1fe9da68199) no-repeat 1px 1px;
+    background: url(https://s2.music.126.net/style/web2/img/loading2.gif?237447b1c0f6d7d691e8a1fe9da68199) no-repeat 1px 1px;
 }
 
 .m-lysearch .srchlist .td {
@@ -10240,7 +10240,7 @@ div.m-mask {
 
 .m-imgview .ctrl {
     position: absolute;
-    background: url(http://s2.music.126.net/style/web2/img/icon2.png?d9c9b597fe31ad68d161b705699ceb63) no-repeat -9999px -9999px;
+    background: url(https://s2.music.126.net/style/web2/img/icon2.png?d9c9b597fe31ad68d161b705699ceb63) no-repeat -9999px -9999px;
     cursor: pointer;
 }
 
@@ -10470,7 +10470,7 @@ div.m-mask {
 
 .m-importbox .logo .arr {
     display: inline-block;
-    background: url(http://s2.music.126.net/style/web2/img/import/import.gif?c649da9894b3e7fcab7de530a410935c) no-repeat 0 0;
+    background: url(https://s2.music.126.net/style/web2/img/import/import.gif?c649da9894b3e7fcab7de530a410935c) no-repeat 0 0;
     width: 90px;
     height: 40px;
     margin: 0 8px 0 5px
@@ -10853,7 +10853,7 @@ div.m-layer-find .item .icon {
     margin: 8px auto;
     width: 68px;
     height: 68px;
-    background: url(http://s2.music.126.net/style/web2/img/icon2.png?fe6096a39935d31e4484f248307413bf) no-repeat 0px -117px;
+    background: url(https://s2.music.126.net/style/web2/img/icon2.png?fe6096a39935d31e4484f248307413bf) no-repeat 0px -117px;
 }
 
 div.m-layer-find .item.z-first .icon {
@@ -11097,7 +11097,7 @@ div.m-layer-down .left .btn i {
     width: 17px;
     height: 17px;
     margin: 11px 10px 0 12px;
-    background: url(http://s2.music.126.net/style/web2/img/icon2.png?6b36da03bb99dfcf7188c60947ea5fd7) no-repeat 0px -310px;
+    background: url(https://s2.music.126.net/style/web2/img/icon2.png?6b36da03bb99dfcf7188c60947ea5fd7) no-repeat 0px -310px;
 }
 
 div.m-layer-down .left .btn-mac {
@@ -11120,12 +11120,12 @@ div.m-layer-down .right .qtcode {
     width: 86px;
     height: 86px;
     margin: 14px auto;
-    background: url(http://s2.music.126.net/style/web2/img/qtcode86.png?9792f83b5aa508699b918b48ecb16eaf);
+    background: url(https://s2.music.126.net/style/web2/img/qtcode86.png?9792f83b5aa508699b918b48ecb16eaf);
 }
 
 div.m-layer-ie6 .left .btn i,
 div.m-layer-ie6 .right .btn i {
-    background: url(http://s2.music.126.net/style/web2/img/ie6/ie6tip.png?fbff62bae8094f97fea338bbe5534ca7) no-repeat -9999px -9999px;
+    background: url(https://s2.music.126.net/style/web2/img/ie6/ie6tip.png?fbff62bae8094f97fea338bbe5534ca7) no-repeat -9999px -9999px;
 }
 
 div.m-layer-ie6 {
@@ -11205,7 +11205,7 @@ div.m-layer-ie6 .left .btn-mb .code {
     height: 159px;
     top: 42px;
     left: 0;
-    background: url(http://s2.music.126.net/style/web2/img/ie6/code.png?e085a75b7625c3c261a9945bee7d09ab);
+    background: url(https://s2.music.126.net/style/web2/img/ie6/code.png?e085a75b7625c3c261a9945bee7d09ab);
 }
 
 div.m-layer-ie6 .right {
@@ -11289,7 +11289,7 @@ div.m-layer-ie6 h3 {
 
 .n-log2 .u-main .u-plt {
     height: 120px;
-    background: url(http://s2.music.126.net/style/web2/img/platform.png?56d3f59137309d7800d32f253c5f5187) no-repeat 13px 0;
+    background: url(https://s2.music.126.net/style/web2/img/platform.png?56d3f59137309d7800d32f253c5f5187) no-repeat 13px 0;
 }
 
 .n-log2 .u-main .u-btn2 {
@@ -11584,18 +11584,18 @@ div.m-layer-ie6 h3 {
 .ScapTcha .Slider {
     width: 72px;
     height: 32px;
-    background: transparent url(http://s2.music.126.net/style/web2/img/3rd/scaptcha/slider.png?35915365ebacaf140d3e653c05b17131) no-repeat;
+    background: transparent url(https://s2.music.126.net/style/web2/img/3rd/scaptcha/slider.png?35915365ebacaf140d3e653c05b17131) no-repeat;
     cursor: pointer;
     position: absolute;
     left: 0px;
 }
 
 .ScapTcha .sliderValid {
-    background: transparent url(http://s2.music.126.net/style/web2/img/3rd/scaptcha/slider_valid.png?f1320f4ce7e25ba49445c5a4c3167662) no-repeat;
+    background: transparent url(https://s2.music.126.net/style/web2/img/3rd/scaptcha/slider_valid.png?f1320f4ce7e25ba49445c5a4c3167662) no-repeat;
 }
 
 .ScapTcha .sliderInvalid {
-    background: transparent url(http://s2.music.126.net/style/web2/img/3rd/scaptcha/slider_invalid.png?c2ad502659e67cae4b982bf943ced5e2) no-repeat;
+    background: transparent url(https://s2.music.126.net/style/web2/img/3rd/scaptcha/slider_invalid.png?c2ad502659e67cae4b982bf943ced5e2) no-repeat;
 }
 
 .ScapTcha .TxtStatus {
