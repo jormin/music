@@ -8,7 +8,6 @@
         $videos = array();
         foreach ($mv['brs'] as $key => $videourl) {
             $videourl = str_replace('http:', 'https:', $videourl);
-            p($videourl);die;
             $videos[] = array(
                 "profile"=> 113,
                 "width"=> $key*1.777,
